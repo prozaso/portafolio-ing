@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<title>Registro de Infracciones</title>
+<title>-</title>
 
 
 <div class="container-fluid">
@@ -36,85 +36,85 @@
             <!-- inicio columna 1 -->
             <div class="col-sm-4 p-4">
 
-                <!-- datos inspector -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     <div class="mt-3">
-                        <h5>Datos inspector</h5>
+                        <h5>-</h5>
                     </div>
 
                     <div class="input-group mt-5 input-group-sm mb-3">
-                        <input type="text" class="form-control" placeholder="Usuario inspector"
+                        <input type="text" class="form-control" placeholder="-"
                         aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                         <div class="input-group-append" id="button-addon4">
-                            <button class="btn btn-warning" type="button">Rescatar</button>
+                            <button class="btn btn-warning" type="button">-</button>
                         </div>
                     </div>
 
                     <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Nombre inspector: </span>
+                        <span class="input-group-text" id="">- </span>
                         </div>
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <!-- fin datos inspector -->
+                <!-- - -->
 
-                <!-- datos vehiculo -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     <div class="mt-3">
-                        <h5>Datos vehiculo</h5>
+                        <h5>-</h5>
                     </div>
 
                     <form action="" method="POST">
                         {% csrf_token %}
 
                         <div class="input-group mt-5 input-group-sm mb-3">
-                            <input type="text" class="form-control" placeholder="Patente"
+                            <input type="text" class="form-control" placeholder="-"
                             aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                             <div class="input-group-append" id="button-addon4">
-                                <button class="btn btn-warning" type="button">Obtener Rut</button>
+                                <button class="btn btn-warning" type="button">-</button>
                             </div>
                         </div>
 
                         <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Color: </span>
-                            </div>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Marca: </span>
+                            <span class="input-group-text" id="">-</span>
                             </div>
                             <input type="text" class="form-control">
                         </div>
 
                         <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Modelo: </span>
+                            <span class="input-group-text" id="">-</span>
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="">-</span>
                             </div>
                             <input type="text" class="form-control">
                         </div>
 
                         <div class="custom-control custom-checkbox mb-3 text-right">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Es dueño del vehiculo</label>
+                            <label class="custom-control-label" for="customCheck1">-</label>
                         </div>
 
                     </form>
                 </div>
-                <!-- fin datos vehiculo -->
+                <!-- - -->
 
-                <!-- datos infraccion -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     <div class="mt-3">
-                        <h5>Datos infraccion</h5>
+                        <h5>-</h5>
                     </div>
 
                     <div class="input-group input-group-sm mb-3 mt-5">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Fecha: </span>
+                        <span class="input-group-text" id="">- </span>
                         </div>
                         <input type="date" name="bday" min="1000-01-01"
                          max="3000-12-31" class="form-control">
@@ -122,59 +122,59 @@
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Hora: </span>
+                        <span class="input-group-text" id="">- </span>
                         </div>
                         <input type="text" class="form-control">
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Notificacion: </label>
+                        <label class="input-group-text" for="inputGroupSelect01">- </label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Seleccione...</option>
-                        <option value="1">Presencial</option>
-                        <option value="2">Empadronado</option>
+                        <option selected>-...</option>
+                        <option value="1">-</option>
+                        <option value="2">-</option>
                         </select>
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" placeholder="Conducir fuera de pista"
+                        <input type="text" class="form-control" placeholder="-"
                         aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                         <div class="input-group-append" id="button-addon4">
-                            <button class="btn btn-warning" type="button">Buscar Tipo</button>
+                            <button class="btn btn-warning" type="button">-</button>
                         </div>
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Tipo: </span>
+                        <span class="input-group-text" id="">-</span>
                         </div>
                         <input type="text" class="form-control">
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" placeholder="Santa filo"
+                        <input type="text" class="form-control" placeholder="-"
                         aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                         <div class="input-group-append" id="button-addon4">
-                            <button class="btn btn-warning" type="button">Buscar Lugar</button>
+                            <button class="btn btn-warning" type="button">-</button>
                         </div>
                     </div>
 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Lugar: </span>
+                        <span class="input-group-text" id="">-</span>
                         </div>
                         <input type="text" class="form-control">
                     </div>
 
                     <div class="custom-file input-group-sm mb-3">
                         <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                        <label class="custom-file-label" for="customFileLang">-</label>
                       </div>
 
                 </div>
-                <!-- fin datos infraccion --> 
+                <!-- - --> 
 
             </div>
             <!-- fin columna 1 -->
@@ -182,7 +182,7 @@
 
             <!-- inicio columna 2 -->
             <div class="col-sm-4 p-4">
-                <!-- Datos infractor -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     
                     <!-- <div class="mt-3">
@@ -193,7 +193,7 @@
                         {% csrf_token %}
 
                         <div class="input-group mt-5 mb-3 input-group-sm">
-                            <input type="text" name="rut" value="{{rut}}" class="form-control" placeholder="Rut"
+                            <input type="text" name="rut" value="{{rut}}" class="form-control" placeholder="-"
                             aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
                             <div class="input-group-append" id="button-addon4">
                                 <button class="btn btn-warning" type="submit">Rescatar datos</button>
@@ -252,57 +252,57 @@
 
                     </form> -->
                 </div>
-                <!-- Fin datos infractor -->
+                <!-- - -->
 
-                <!-- datos licencia -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     <div class="mt-3">
-                        <h5>Datos licencia</h5>
+                        <h5>-</h5>
                     </div>
 
                     <div class="input-group input-group-sm">
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Clase: </span>
+                        <span class="input-group-text" id="">-</span>
                         </div>
                         <input type="text" class="form-control mr-3">
 
                         <div class="input-group-prepend">
-                        <span class="input-group-text" id="">Estado: </span>
+                        <span class="input-group-text" id="">-</span>
                         </div>
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <!-- fin datos licencia -->
+                <!-- - -->
 
-                <!-- historial de infracciones -->
+                <!-- - -->
                 <div class="border p-4 mb-3">
                     <div class="mt-3">
-                        <h5>Historial de infracciones</h5>
+                        <h5>-</h5>
                     </div>
 
                     <div class="mt-5 mb-3">
                         <table class="table table-sm border">
                             <thead>
                             <tr class="bg-warning">
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Gravedad</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">-</th>
+                                <th scope="col">-</th>
+                                <th scope="col">-</th>
+                                <th scope="col">-</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>Estacionamiento exclusivo</td>
-                                <td>Grave</td>
-                                <td>09/04/2011</td>
-                                <td>Pagada</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
 
                             </tr>
                             <tr>
-                                <td>Neumatico mal estado</td>
-                                <td>Grave</td>
-                                <td>26/03/2017</td>
-                                <td>Vencida</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>-</td>
@@ -345,9 +345,9 @@
                         </table>
 
                         <div class="mt-4 mb-3 text-center">
-                            <button class="btn btn-warning mr-5 btn-sm" type="submit">Ingresar Infraccion</button>
-                            <button class="btn btn-danger mr-5 btn-sm" type="submit">Revocar licencia</button>
-                            <button class="btn btn-warning btn-sm" type="reset">Limpiar</button>
+                            <button class="btn btn-warning mr-5 btn-sm" type="submit">-</button>
+                            <button class="btn btn-danger mr-5 btn-sm" type="submit">-</button>
+                            <button class="btn btn-warning btn-sm" type="reset">-</button>
                         </div>
                     </div>
                 </div>

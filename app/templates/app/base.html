@@ -15,13 +15,33 @@
 
     <!-- EMPIEZA NAVBAR -->
 
+    <!-- EMPIEZA NAVBAR -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a href="#">Inicio</a>
-      <a href="#">Inicio</a>
-      <a href="#">Inicio</a>
-      <a href="#">Inicio</a>
-      <a href="#">Inicio</a>
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img width="75px" height="70px"src="{% static 'app/img/icono.png' %}" style="position:relative;top:-2px">
+        No más accidentes
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Modificar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Eliminar</a>
+          </li>
+        </ul>
+      </div>
     </nav>
+
+    <!-- FIN NAVBAR -->
 
     <!-- FIN NAVBAR -->
 
@@ -42,8 +62,8 @@
 
             <div class="card text-center">
                 <div class="card-body">
-                  <h5 class="card-title">Municipalidad de Cachiyuyo</h5>
-                  <p class="card-text">Registro de Infracciones</p>
+                  <h5 class="card-title">No más accidentes</h5>
+                  <p class="card-text">🥰</p>
                 </div>
               </div>
 
