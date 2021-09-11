@@ -9,19 +9,22 @@
     {% block css %}
     <!-- Latest compiled and minified CSS -->    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="{% static 'app/css/nav.css' %}">
     {% endblock %}
 
-
     <!-- EMPIEZA NAVBAR -->
 
-    <!-- EMPIEZA NAVBAR -->
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar">
       <a class="navbar-brand" href="{% url 'home' %}">
-        <img width="75px" height="70px"src="{% static 'app/img/icono.png' %}" style="position:relative;top:-2px">
-        No más accidentes
+          <div class="nav-icono">
+            <img class="icono" src="{% static 'app/img/icono.png' %}" >
+          </div>
       </a>
+
+      <div class="nav-titulo" href="{% url 'home' %}">
+        <h6 class="texto-nav-titulo">No más accidentes</h6>
+      </div>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,8 +43,6 @@
         </ul>
       </div>
     </nav>
-
-    <!-- FIN NAVBAR -->
 
     <!-- FIN NAVBAR -->
 
