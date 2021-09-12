@@ -3,25 +3,42 @@
 
 {% block contenido %}
 
-<div class="exactCenter border rounded pt-5 pr-5 pl-5 pb-4 bg-light">
-    <form action="" method="POST">
-        {% csrf_token %}
+{% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
 
-        <table class="table">
+{% if next %}
 
-            <div class="text-center mb-3" style="font-size: larger; font-weight: bolder;">
-                <label for="">Administración</label>
-            </div>
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina. Intente ingresar
+        con una cuenta que tenga acceso.</p>
+    {% else %}
+    <p>Por favor ingrese para ver esta pagina.</p>
+    {% endif %}
+    
+{% endif %}
 
-            {{ form.as_table }}
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
 
-        </table>
+    <div>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+    </div>
 
-        <div class="mb-3 text-right">
-            <button class="btn-sm btn-warning btn-block" style="font-size: medium; font-weight: bolder;" type="submit" value="Login" name="guardar">Ingresar</button>
-        </div>
+    <div>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+    </div>
+
+    <div>
+        <input type="submit" value="ingresar" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </div>
 
     </form>
-</div>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+    <p><a href="{% url 'password_reset' %}">Olvidó la contraseña?</a></p>
 
 {% endblock %}
