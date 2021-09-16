@@ -33,13 +33,13 @@ LOGOUT_REDIRECT_URL = 'logged_out.html'
 # Application definition
 
 INSTALLED_APPS = [
-    'app',
-    'django.contrib.admin',
+        'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
     
 ]
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'nomas_accidentes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates',],
+        'DIRS': [''],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
