@@ -4,17 +4,42 @@
 
 {% block contenido %}
 
-<div class="input-group input-group-sm mb-3">
-  <div class="input-group-prepend">
-  <label class="input-group-text" for="inputGroupSelect01">Servicio: </label>
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Servicio: </label>
+    </div>
+    <select class="custom-select" id="cboserv" name="cboserv">
+    <option value="">Seleccione...</option>
+    {% for s in servicios %}
+    <option value="{{ s.0 }}"> {{ s.1 }} </option>
+    {% endfor %}
+    </select>
   </div>
-  <select class="custom-select" id="cboserv" name="cboserv">
-  <option value="">Seleccione...</option>
-  {% for s in servicios %}
-  <option value="{{ s.0 }}"> {{ s.1 }} - {{ s.2 }} </option>
-  {% endfor %}
-  </select>
-</div>
+
+  <div>
+    <table>
+      {% for s in servicio %}
+    <tr>
+      <th>{{ s.0 }}</th>
+      <th>{{ s.1 }}</th>
+      <th>{{ s.2 }}</th>
+    </tr>
+    {% endfor %}
+    </table>
+  </div>
+
+  <div>
+    <button type="submit" name="buscar">Buscar</button>
+    <button type="submit" name="eliminar">Eliminar</button>
+  </div>
+
+  {{ mensaje }}
+
+</form>
+
 
 
 {% endblock %}
