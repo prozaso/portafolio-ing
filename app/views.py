@@ -12,8 +12,11 @@ def home(request):
 
 
 def servicios(request):
-    print(lista_servicios())
-    return render(request, 'app/servicios.html')
+    data = {
+        'servicios': lista_servicios()
+    }
+    print(servicios)
+    return render(request, 'app/servicios.html', data)
 
 
 def lista_servicios():

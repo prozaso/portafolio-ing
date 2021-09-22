@@ -4,7 +4,17 @@
 
 {% block contenido %}
 
-
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+  <label class="input-group-text" for="inputGroupSelect01">Servicio: </label>
+  </div>
+  <select class="custom-select" id="cboserv" name="cboserv">
+  <option value="">Seleccione...</option>
+  {% for s in servicios %}
+  <option value="{{ s.0 }}"> {{ s.1 }} - {{ s.2 }} </option>
+  {% endfor %}
+  </select>
+</div>
 
 
 {% endblock %}
