@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	{% load static %}
+	  {% load static %}
 
     {% block css %}
     <!-- Latest compiled and minified CSS -->    
@@ -13,41 +13,10 @@
     {% endblock %}
 
     <!-- EMPIEZA NAVBAR -->
-
-    <!-- <nav class="navbar">
-      <a class="navbar-brand" href="{% url 'home' %}">
-          <div class="nav-icono">
-            <img class="icono" src="{% static 'app/img/icono.png' %}" >
-          </div>
-      </a>
-
-      <div class="nav-titulo" href="{% url 'home' %}">
-        <h6 class="texto-nav-titulo">No más accidentes</h6>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Modificar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Eliminar</a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
-
     <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow p-3 mb-5 rounded-bottom">
       <div class="container-fluid">
         <a class="navbar-brand " href="{% url 'home' %}">
-          <img id="icono" src="{% static 'app/img/icono2.png' %}" alt="" width="64" height="54">
+          <img id="icono" src="{% static 'app/img/icono.png' %}" alt="" width="60" height="60">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,10 +24,10 @@
         <div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'servicios' %}">Gestión servicios</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -78,55 +47,42 @@
           
         </div>
         <div class="nav-item">
-          <a class="btn btn-warning" href="{% url 'login' %}">Ingresar</a>
+          {% if user.is_authenticated %}
+          <a class="btn btn-warning border border-dark" href="{% url 'logout' %}">Salir</a>
+          <a class="btn btn-warning border">{{ user.username }}</a>
+          {% else %}
+          <a class="btn btn-warning border border-dark" href="{% url 'login' %}">Ingresar</a>
+          {% endif %}
         </div>
       </div>
     </nav>
-
     <!-- FIN NAVBAR -->
 
-</head>
-<body>
-
-
+  </head>
+  
+  <body>
 
     {% block contenido %}
     {% endblock %}
 
-
-    <!-- EMPIEZA FOOTER -->
-
-      <body class="d-flex flex-column min-vh-100">
-        <div class="wrapper flex-grow-1"></div>
-        <footer>
-
-            <div class="card text-center">
-                <div class="card-body">
-                  <h5 class="card-title">No más accidentes</h5>
-                  <p class="card-text">🥰</p>
-                </div>
-              </div>
-
-        </footer>
-    </body>
-
-    <!-- FIN FOOTER -->
-
-
     {% block javascript %}
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
     {% endblock %}
 
-</body>
+  </body>
+
+  <!-- EMPIEZA FOOTER -->
+  <!-- <footer>
+      <div class="card text-center bg-warning">
+          <div class="card-body">
+            <h5 class="card-title">No más accidentes</h5>
+            <img id="icono" src="{% static 'app/img/icono.png' %}" alt="" width="60" height="60">
+          </div>
+        </div>
+  </footer> -->
+  <!-- FIN FOOTER -->
+
 </html>

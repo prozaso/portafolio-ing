@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'logged_out.html'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 
