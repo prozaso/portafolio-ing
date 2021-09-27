@@ -1,29 +1,29 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-
 {% block contenido %}
 
-<div class="container mt-5">
 
   <form action="" method="POST">
     {% csrf_token %}
 
     <!-- SERVICIO DROPDOWN -->
     <div class="row g-3">
-      <div class="col-2">
-        <div class="input-group-text">Servicio</div>
-      </div>
-      <div class="col-auto">
-        <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
-          <option value="0" selected>Seleccione...</option>
-          {% for s in servicios %}
-          <option value="{{ s.0 }}"> {{ s.1 }} </option>
-          {% endfor %}
-        </select>
-      </div>
-      <div class="col-auto">
-        <button type="submit" name="buscar" class="btn btn-primary mb-3">Buscar</button>
+      <div class="row g-2">
+        <div class="col-2">
+          <div class="input-group-text">Servicio</div>
+        </div>
+        <div class="col-2">
+          <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
+            <option value="0" selected>Seleccione...</option>
+            {% for s in servicios %}
+            <option value="{{ s.0 }}"> {{ s.1 }} </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-2">
+          <button type="submit" name="buscar" class="btn btn-primary mb-3">Buscar</button>
+        </div>
       </div>
     </div>
     <!-- FIN SERVICIO DROPDOWN -->
@@ -128,6 +128,5 @@
   
   </form>
 
-</div>
 
 {% endblock %}

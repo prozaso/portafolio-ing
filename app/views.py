@@ -31,7 +31,6 @@ def servicios(request):
         if request.method == 'POST':
             id      = request.POST.get('idservicio')
             salida  = eliminar_servicio(id)
-            print(id)
             if salida == 1 and id is not None:
                 data['eliminar'] = 'servicio eliminado correctamente!.'
             else:
