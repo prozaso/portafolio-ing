@@ -7,6 +7,6 @@ from .views import *
 urlpatterns = [
     path('', home, name="home"),
     path('servicios', servicios, name="servicios"),
-
+    path('register/', views.register, name='register'),
 
 ]

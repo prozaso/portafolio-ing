@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
+    #'app',
     'crispy_forms',
+    'app.apps.AccountConfig',
     
 ]
 
@@ -82,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'ORCLCDB',
-        'USER': 'c##pablo2',
+        'USER': 'c##ususarios2',
         'PASSWORD': '12345678',
         'HOST': 'localhost',
         'PORT': '55001',
@@ -134,3 +135,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+AUTH_USER_MODEL = 'app.User'

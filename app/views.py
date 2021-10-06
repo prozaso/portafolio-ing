@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.db import connection, models
-from .forms import ServicioForm
+from .forms import ServicioForm, SignUpForm, LoginForm
 from .models import Servicio
 import cx_Oracle
 
+
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def home(request):
@@ -122,7 +124,6 @@ def modificar_servicio(id_serv, nombre_serv, valor_serv):
 
 
 #def lista_regiones():
-
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
     out_cur = django_cursor.connection.cursor()
@@ -134,3 +135,44 @@ def modificar_servicio(id_serv, nombre_serv, valor_serv):
         lista.append(fila)
 
     return lista
+
+
+##################################################################################################################
+
+def register(request):
+    msg = None
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            msg = 'user created'
+            return redirect('/')
+        else:
+            msg = 'form is not valid'
+    else:
+        form = SignUpForm()
+    return render(request,'registration/register.html', {'form': form, 'msg': msg})
+
+
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    msg = None
+    if request.method == 'POST':
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_admin:
+                login(request, user)
+                return redirect('adminpage')
+            elif user is not None and user.is_customer:
+                login(request, user)
+                return redirect('customer')
+            elif user is not None and user.is_employee:
+                login(request, user)
+                return redirect('employee')
+            else:
+                msg= 'invalid credentials'
+        else:
+            msg = 'error validating form'
+    return render(request, 'login.html', {'form': form, 'msg': msg})
