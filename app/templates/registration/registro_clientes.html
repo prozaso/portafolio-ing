@@ -44,11 +44,13 @@
                 </div>
 
                 <div class="form-group last mb-5">
-                    {{ form.es_cliente|as_crispy_field }}
+                  {{ form.es_cliente|as_crispy_field }}
                 </div>
 
                   <span class="text-error">{{ form.errors }}</span>
-                <input type="submit"  value="Register" class="btn btn-pill text-white btn-block btn-warning">
+                  
+                <button type="submit" class="btn btn-pill text-white btn-block btn-warning">Registrar</button>
+                {{ err }}
               </form>
             </div>
           </div>

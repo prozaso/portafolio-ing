@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class ServicioForm(ModelForm):
 
     class Meta:
-        model = Servicio
+        model  = Servicio
         fields = ['nombre_serv', 'valor_serv']
 
 ##################################################################################################################
@@ -15,14 +15,12 @@ class ServicioForm(ModelForm):
 class LoginForm(forms.Form):
     
     class Meta:
-        model = User
+        model  = User
         fields = ['username', 'password']
 
 
 class RegistroClientesForm(UserCreationForm):
     
     class Meta:
-        model = User
+        model  = User
         fields = ('email', 'password1', 'password2', 'es_cliente', 'razon_social', 'rut')
-
-        es_cliente = forms.BooleanField(required=True)
