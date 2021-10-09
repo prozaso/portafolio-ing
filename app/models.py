@@ -5,9 +5,25 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    is_admin    = models.BooleanField('Is admin', default=False)
-    is_customer = models.BooleanField('Is customer', default=False)
-    is_employee = models.BooleanField('Is employee', default=False)
+    es_administrador    = models.BooleanField('Es administrador', default=False)
+    es_profesional      = models.BooleanField('Es profesional', default=False)
+    es_cliente          = models.BooleanField('Es cliente', default=False)
+    rut                 = models.CharField(max_length=10, null=False)
+    email               = models.CharField(max_length=100, unique=True, null=False)
+    razon_social        = models.CharField(max_length=300, null=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+class Cliente(AbstractBaseUser):
+    es_cliente          = models.BooleanField('Es cliente', default=False)
+    rut                 = models.CharField(max_length=10, null=False)
+    email               = models.CharField(max_length=100, unique=True, null=False)
+    razon_social        = models.CharField(max_length=300, null=False)
+    direccion_cli       = models.CharField(max_length=300, null=True, blank=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
 
 class Accidente(models.Model):

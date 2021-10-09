@@ -10,57 +10,19 @@ class ServicioForm(ModelForm):
         model = Servicio
         fields = ['nombre_serv', 'valor_serv']
 
-
-
 ##################################################################################################################
 
 class LoginForm(forms.Form):
-    username = forms.CharField(
-        widget= forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    password = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-
-
-class SignUpForm(UserCreationForm):
-    username = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    password1 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    password2 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-    email = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "class": "form-control"
-            }
-        )
-    )
-
+    
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2', 'is_admin', 'is_employee', 'is_customer')
+        fields = ['username', 'password']
+
+
+class RegistroClientesForm(UserCreationForm):
+    
+    class Meta:
+        model = User
+        fields = ('email', 'password1', 'password2', 'es_cliente', 'razon_social', 'rut')
+
+        es_cliente = forms.BooleanField(required=True)

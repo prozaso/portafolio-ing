@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+
+<div class="content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 contents">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="form-block">
+                <div class="mb-4">
+                    <h1>Registro de Cliente</h1>
+              </div>
+                <span class="mb-0 text-muted">
+              {% if msg %}
+                  {{ msg | safe }}
+              {% endif %}
+            </span>
+              <form  method="post">
+                  {% csrf_token %}
+                <div class="form-group first">
+                  {{ form.email|as_crispy_field }}
+                </div>
+                <div class="form-group last">
+                    {{ form.razon_social|as_crispy_field }}
+                </div>
+                <div class="form-group last">
+                    {{ form.rut|as_crispy_field }}
+                </div>
+                <div id="passwordHelpBlock" class="form-text">
+                    <ul>
+                      <li>Ingrese el rut sin puntos ni guión.</li>
+                    </ul>
+                </div>
+                <div class="form-group last mb-4">
+                    {{ form.password1|as_crispy_field }}
+                </div>
+                <div class="form-group last mb-4">
+                    {{ form.password2|as_crispy_field }}
+                </div>
+
+                <div class="form-group last mb-5">
+                    {{ form.es_cliente|as_crispy_field }}
+                </div>
+
+                  <span class="text-error">{{ form.errors }}</span>
+                <input type="submit"  value="Register" class="btn btn-pill text-white btn-block btn-warning">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

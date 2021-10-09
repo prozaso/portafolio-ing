@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db import connection, models
-from .forms import ServicioForm, SignUpForm, LoginForm
+from .forms import ServicioForm, RegistroClientesForm, LoginForm
 from .models import Servicio
 import cx_Oracle
 
@@ -139,40 +139,34 @@ def modificar_servicio(id_serv, nombre_serv, valor_serv):
 
 ##################################################################################################################
 
-def register(request):
+def registro_clientes(request):
     msg = None
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = RegistroClientesForm(request.POST)
         if form.is_valid():
             user = form.save()
-            msg = 'user created'
-            return redirect('/')
+            msg  = 'Usuario creado.'
+            return redirect('login')
         else:
-            msg = 'form is not valid'
+            msg = 'Datos invalidos.'
     else:
-        form = SignUpForm()
-    return render(request,'registration/register.html', {'form': form, 'msg': msg})
+        form = RegistroClientesForm()
+    return render(request,'registration/registro_clientes.html', {'form': form, 'msg': msg})
 
 
-def login_view(request):
+def login(request):
     form = LoginForm(request.POST or None)
-    msg = None
+    msg  = None
     if request.method == 'POST':
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None and user.is_admin:
+            user     = authenticate(username=username, password=password)
+            if user is not None:
                 login(request, user)
-                return redirect('adminpage')
-            elif user is not None and user.is_customer:
-                login(request, user)
-                return redirect('customer')
-            elif user is not None and user.is_employee:
-                login(request, user)
-                return redirect('employee')
+                return redirect('/')
             else:
-                msg= 'invalid credentials'
+                msg = 'Credenciales invalidas.'
         else:
-            msg = 'error validating form'
+            msg = 'Error validando el formulario.'
     return render(request, 'login.html', {'form': form, 'msg': msg})
