@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db import connection, models
-from .forms import ServicioForm, RegistroClientesForm, LoginForm
+from .forms import ServicioForm, RegistroUsuariosForm, LoginForm
 from .models import Servicio
 import cx_Oracle
 
@@ -139,10 +139,10 @@ def modificar_servicio(id_serv, nombre_serv, valor_serv):
 
 ##################################################################################################################
 
-def registro_clientes(request):
+def registro_usuarios(request):
     msg = None
     if request.method == 'POST':
-        form = RegistroClientesForm(request.POST)
+        form = RegistroUsuariosForm(request.POST)
         if form.is_valid():
             user = form.save()
             msg  = 'Usuario creado.'
@@ -150,8 +150,8 @@ def registro_clientes(request):
         else:
             msg = 'Datos invalidos.'
     else:
-        form = RegistroClientesForm()
-    return render(request,'registration/registro_clientes.html', {'form': form, 'msg': msg})
+        form = RegistroUsuariosForm()
+    return render(request,'registration/registro_usuarios.html', {'form': form, 'msg': msg})
 
 
 def login(request):

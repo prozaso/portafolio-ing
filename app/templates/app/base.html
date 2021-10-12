@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	  {% load static %}
+    <!-- <link rel="shortcut icon" type="image/png" href="{% static 'app/img/icono.png' %}"/> -->
 
     {% block css %}
     <!-- Latest compiled and minified CSS -->    
@@ -47,13 +48,18 @@
           
         </div>
         <div class="nav-item">
+
           {% if user.is_authenticated %}
           <a class="btn btn-warning border border-dark" href="{% url 'logout' %}">Salir</a>
           <a class="btn btn-warning border">{{ user.email }}</a>
           {% else %}
           <a class="btn btn-warning border border-dark" href="{% url 'login' %}">Ingresar</a>
-          <a class="btn btn-warning border border-dark" href="{% url 'registro_clientes' %}">Registrar</a>
           {% endif %}
+
+          {% if user.es_administrador %}
+          <a class="btn btn-warning border border-dark" href="{% url 'registro_usuarios' %}">Registrar Usuario</a>
+          {% endif %}
+          
         </div>
       </div>
     </nav>
