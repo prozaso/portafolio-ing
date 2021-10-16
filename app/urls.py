@@ -1,11 +1,11 @@
-from django.conf.urls import url
 from django.urls import path
-from .views import *
+from .views import views, servicios, usuarios, capacitaciones
 
 
 urlpatterns = [
-    path('', home, name="home"),
-    path('servicios', servicios, name="servicios"),
-    path('registro_usuarios', registro_usuarios, name='registro_usuarios'),
+    path('', views.home, name="home"),
+    path('servicios', servicios.servicios, name="servicios"),
+    path('registro_usuarios', usuarios.registro_usuarios, name='registro_usuarios'),
+    path('capacitaciones', capacitaciones.capacitaciones, name='capacitaciones')
 
 ]

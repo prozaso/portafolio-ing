@@ -15,7 +15,7 @@ class User(AbstractUser):
 
     phoneNumberRegex    = RegexValidator(regex = r"^\+?1?\d{8,15}$")
     telefono            = models.CharField(validators = [phoneNumberRegex], max_length = 12, null=True)
-    direccion           = models.CharField(max_length=300, null=True)
+    direccion           = models.CharField(max_length=300, null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

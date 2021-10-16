@@ -5,79 +5,80 @@
 {% block contenido %}
 
 
-<div class="content">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6 contents">
-        <div class="row justify-content-center">
-          <div class="col-md-12">
-            <div class="form-block">
-                <div class="mb-4">
-                    <h1>Registro de Usuarios</h1>
+{% if user.es_administrador %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 contents">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="form-block">
+              <div class="mb-4">
+                  <h1>Registro de Usuarios</h1>
               </div>
-                <span class="mb-0 text-muted">
+              <span class="mb-0 text-muted">
               {% if msg %}
                   {{ msg | safe }}
               {% endif %}
-            </span>
-              <form  method="post">
-                  {% csrf_token %}
-                <div class="form-group first">
-                  {{ form.email|as_crispy_field }}
-                </div>
-                <div class="form-group">
-                    {{ form.razon_social|as_crispy_field }}
-                </div>
-                <div class="form-group">
-                    {{ form.rut|as_crispy_field }}
-                </div>
-                <div id="passwordHelpBlock" class="form-text">
-                    <ul>
-                      <li>Ingrese el rut sin puntos ni guión.</li>
-                    </ul>
-                </div>
-                <div class="form-group mb-4">
-                  {{ form.telefono|as_crispy_field }}
-                </div>
-                <div class="form-group">
-                  {{ form.direccion|as_crispy_field }}
+              </span>
+            <form  method="post">
+                {% csrf_token %}
+              <div class="form-group first">
+                {{ form.email|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                  {{ form.razon_social|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                  {{ form.rut|as_crispy_field }}
               </div>
               <div id="passwordHelpBlock" class="form-text">
                   <ul>
-                    <li>Ingrese sólo si es un cliente.</li>
+                    <li>Ingrese el rut sin puntos ni guión.</li>
                   </ul>
               </div>
-                <div class="form-group mb-4">
-                    {{ form.password1|as_crispy_field }}
-                </div>
-                <div class="form-group mb-4">
-                    {{ form.password2|as_crispy_field }}
-                </div>
-
-                <div class="form-group">
-                  {{ form.es_cliente|as_crispy_field }}
-                </div>
-
-                <div class="form-group">
-                  {{ form.es_profesional|as_crispy_field }}
-                </div>
-
-                <div class="form-group last mb-5">
-                  {{ form.es_administrador|as_crispy_field }}
-                </div>
-
-                  <span class="text-error">{{ form.errors }}</span>
-                  
-                <button type="submit" class="btn btn-pill text-white btn-block btn-warning">Registrar</button>
-                {{ err }}
-              </form>
+              <div class="form-group mb-4">
+                {{ form.telefono|as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.direccion|as_crispy_field }}
             </div>
+            <div id="passwordHelpBlock" class="form-text">
+                <ul>
+                  <li>Ingrese sólo si es un cliente.</li>
+                </ul>
+            </div>
+              <div class="form-group mb-4">
+                  {{ form.password1|as_crispy_field }}
+              </div>
+              <div class="form-group mb-4">
+                  {{ form.password2|as_crispy_field }}
+              </div>
+
+              <div class="form-group">
+                {{ form.es_cliente|as_crispy_field }}
+              </div>
+
+              <div class="form-group">
+                {{ form.es_profesional|as_crispy_field }}
+              </div>
+
+              <div class="form-group last mb-5">
+                {{ form.es_administrador|as_crispy_field }}
+              </div>
+
+                <span class="text-error">{{ form.errors }}</span>
+                
+              <button type="submit" class="btn btn-pill text-white btn-block btn-warning">Registrar</button>
+              {{ err }}
+            </form>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
+
+{% endif %}
 
 {% endblock %}
