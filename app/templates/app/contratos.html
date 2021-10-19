@@ -1,0 +1,158 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_administrador %}
+
+
+<form action="" method="post">
+  {% csrf_token %}
+    <div class="row">
+        <!-- PRIMERA COLUMNA -->
+        <div class="col border rounded m-3 p-3">
+            <div class="mb-3">
+                <div class="row mb-3">
+                    <div class="col col-lg-3">
+                      <div class="input-group-text">Cliente</div>
+                    </div>
+                    <div class="col col-lg-6">
+                      <select class="form-select" id="cbocli" name="cbocli" form-select-sm" aria-label=".form-select-sm example">
+                        <option value="0" selected>Seleccione...</option>
+                        {% for c in clientes %}
+                        <option value="{{ c.7 }}"> {{ c.15}} </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col col-lg-2">
+                      <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
+                    </div>
+                  </div>
+            </div>
+            <div class="mb-3">
+              {% for c in cliente %}
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Email</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" value="{{ c.7 }}" name="emailcliente" class="form-control" id="autoSizingInputGroup" placeholder="email" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+          
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Razon social</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" value="{{ c.15 }}" name="nempresa" class="form-control" id="autoSizingInputGroup" placeholder="razon social" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+          
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Rut empresa</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" value="{{ c.14 }}" name="rutempresa" class="form-control" id="autoSizingInputGroup" placeholder="rut" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+              {% empty %}
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Email</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" name="emailcliente" class="form-control" id="autoSizingInputGroup" placeholder="id" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+          
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Razon social</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" name="nempresa" class="form-control" id="autoSizingInputGroup" placeholder="razon social" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+          
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Rut empresa</div>
+                </div>
+                <div class="col col-lg-6">
+                  <input type="text" name="rutempresa" class="form-control" id="autoSizingInputGroup" placeholder="rut" readonly>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- MENSAJES -->
+            <div>
+              {% if cliente_no_seleccionado %}
+              <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>Hola!, </strong> {{ cliente_no_seleccionado }}
+              </div>
+              {% endif %}
+            </div>
+            <!-- FIN MENSAJES -->
+
+        </div>
+        
+        <!-- SEGUNDA COLUMNA -->
+        <div class="col border rounded m-3 p-3">
+          <div class="mb-3">
+              <div class="row mb-3">
+                <div class="col col-lg-3">
+                  <div class="input-group-text">Rubro</div>
+                </div>
+                <div class="col col-lg-6">
+                  <select class="form-select" id="cborub" name="cborub" form-select-sm" aria-label=".form-select-sm example">
+                    <option value="0" selected>Seleccione...</option>
+                    {% for r in rubros %}
+                    <option value="{{ r.0 }}"> {{ r.1 }} </option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col col-lg-2">
+                </div>
+              </div>
+          </div>
+          <div class="mb-3">
+            <div class="row mb-3">
+              <div class="col col-lg-3">
+                <div class="input-group-text">Servicio</div>
+              </div>
+              <div class="col col-lg-6">
+                <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
+                  <option value="0" selected>Seleccione...</option>
+                  {% for s in servicios %}
+                  <option value="{{ s.0 }}"> {{ s.1 }} </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col col-lg-2">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+</form>
+
+
+{% endif %}
+
+{% endblock %}

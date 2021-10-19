@@ -51,7 +51,8 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
               {% if user.es_administrador %}
                 <ul class="dropdown-menu $yellow-200" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'registro_usuarios' %}">Registrar Usuario</a></li>
+                  <li><a class="dropdown-item" href="{% url 'registro_usuarios' %}">Registrar usuario</a></li>
+                  <li><a class="dropdown-item" href="{% url 'contratos' %}">Gestión contratos</a></li>
                   <li><a class="dropdown-item" href="{% url 'servicios' %}">Gestión servicios</a></li>
                   <li><a class="dropdown-item" href="{% url 'capacitaciones' %}">Gestión capacitaciones</a></li>
                   <li><a class="dropdown-item" href="{% url 'rubros' %}">Gestión rubros</a></li>
@@ -88,7 +89,7 @@
   <body>
 
 
-    <div class="container border rounded p-5">
+    <div class="container border rounded p-5 mb-5">
       <div class="row justify-content-center">
 
           {% block contenido %}
