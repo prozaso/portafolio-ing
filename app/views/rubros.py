@@ -7,44 +7,55 @@ def rubros(request):
     data = {
         'rubros' : lista_rubros()
     }
-    #print(rubros)
     
     if 'buscar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('cborub')
-            salida  = buscar_rubro(id)
-            if salida:
-                data['rubro'] = salida
-            else:
-                data['rubro_no_seleccionado'] = 'debes seleccionar un rubro antes de buscar!.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('cborub')
+                salida  = buscar_rubro(id)
+                if salida:
+                    data['rubro'] = salida
+                else:
+                    data['rubro_no_seleccionado'] = 'debes seleccionar un rubro antes de buscar!.'
+        except:
+            data['rubro_no_seleccionado'] = 'debes seleccionar un rubro antes de buscar!.'
 
     if 'eliminar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('idrubro')
-            salida  = eliminar_rubro(id)
-            if salida == 1 and id is not None:
-                data['eliminar'] = 'rubro eliminado correctamente!.'
-            else:
-                data['eliminar'] = 'hubo un error al eliminar el rubro.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('idrubro')
+                salida  = eliminar_rubro(id)
+                if salida == 1 and id is not None:
+                    data['eliminar'] = 'rubro eliminado correctamente!.'
+                else:
+                    data['eliminar'] = 'hubo un error al eliminar el rubro.'
+        except:
+            data['eliminar'] = 'hubo un error al eliminar el rubro.'
 
     if 'agregar' in request.POST:
-        if request.method == 'POST':
-            nombre_rubro = request.POST.get('nrubro')
-            salida = agregar_rubro(nombre_rubro)
-            if salida == 1:
-                data['agregar'] = 'nuevo rubro agregado correctamente!.'
-            else:
-                data['agregar'] = 'hubo un error al intentar agregar el rubro.'
+        try:
+            if request.method == 'POST':
+                nombre_rubro = request.POST.get('nrubro')
+                salida = agregar_rubro(nombre_rubro)
+                if salida == 1:
+                    data['agregar'] = 'nuevo rubro agregado correctamente!.'
+                else:
+                    data['agregar'] = 'hubo un error al intentar agregar el rubro.'
+        except:
+            data['agregar'] = 'hubo un error al intentar agregar el rubro.'
 
     if 'guardar' in request.POST:
-        if request.method == 'POST':
-            id_rubro     = request.POST.get('idrubro')
-            nombre_rubro = request.POST.get('nrubro')
-            salida = modificar_rubro(id_rubro, nombre_rubro)
-            if salida == 1 and nombre_rubro != '':
-                data['modificar'] = 'cambios realizados correctamente!.'
-            else:
-                data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        try:
+            if request.method == 'POST':
+                id_rubro     = request.POST.get('idrubro')
+                nombre_rubro = request.POST.get('nrubro')
+                salida = modificar_rubro(id_rubro, nombre_rubro)
+                if salida == 1 and nombre_rubro != '':
+                    data['modificar'] = 'cambios realizados correctamente!.'
+                else:
+                    data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        except:
+            data['modificar'] = 'hubo un error al intentar guardar los cambios.'
     
     
     return render(request, 'app/rubros.html', data)

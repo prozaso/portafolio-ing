@@ -11,7 +11,7 @@ class User(AbstractUser):
     es_cliente          = models.BooleanField('Es cliente', default=False)
     rut                 = models.CharField(max_length=10, null=False)
     email               = models.EmailField(max_length=100, unique=True, null=False)
-    razon_social        = models.CharField(max_length=300, null=False)
+    razon_social        = models.CharField(max_length=300, null=True, blank=True)
 
     phoneNumberRegex    = RegexValidator(regex = r"^\+?1?\d{8,15}$")
     telefono            = models.CharField(validators = [phoneNumberRegex], max_length = 12, null=True)

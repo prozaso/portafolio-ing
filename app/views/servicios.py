@@ -11,43 +11,55 @@ def servicios(request):
     #print(servicios)
     
     if 'buscar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('cboserv')
-            salida  = servicio_buscar(id)
-            if salida:
-                data['servicio'] = salida
-            else:
-                data['servicio_no_seleccionado'] = 'debes seleccionar un servicio antes de buscar!.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('cboserv')
+                salida  = servicio_buscar(id)
+                if salida:
+                    data['servicio'] = salida
+                else:
+                    data['servicio_no_seleccionado'] = 'debes seleccionar un servicio antes de buscar!.'
+        except:
+            data['servicio_no_seleccionado'] = 'debes seleccionar un servicio antes de buscar!.'
 
     if 'eliminar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('idservicio')
-            salida  = eliminar_servicio(id)
-            if salida == 1 and id is not None:
-                data['eliminar'] = 'servicio eliminado correctamente!.'
-            else:
-                data['eliminar'] = 'hubo un error al eliminar el servicio.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('idservicio')
+                salida  = eliminar_servicio(id)
+                if salida == 1 and id is not None:
+                    data['eliminar'] = 'servicio eliminado correctamente!.'
+                else:
+                    data['eliminar'] = 'hubo un error al eliminar el servicio.'
+        except:
+            data['eliminar'] = 'hubo un error al eliminar el servicio.'
 
     if 'agregar' in request.POST:
-        if request.method == 'POST':
-            nombre_servicio = request.POST.get('nservicio')
-            valor_servicio  = request.POST.get('vservicio')
-            salida = agregar_servicio(nombre_servicio, valor_servicio)
-            if salida == 1:
-                data['agregar'] = 'nuevo servicio agregado correctamente!.'
-            else:
-                data['agregar'] = 'hubo un error al intentar agregar el servicio.'
+        try:
+            if request.method == 'POST':
+                nombre_servicio = request.POST.get('nservicio')
+                valor_servicio  = request.POST.get('vservicio')
+                salida = agregar_servicio(nombre_servicio, valor_servicio)
+                if salida == 1:
+                    data['agregar'] = 'nuevo servicio agregado correctamente!.'
+                else:
+                    data['agregar'] = 'hubo un error al intentar agregar el servicio.'
+        except:
+            data['agregar'] = 'hubo un error al intentar agregar el servicio.'
 
     if 'guardar' in request.POST:
-        if request.method == 'POST':
-            id_servicio     = request.POST.get('idservicio')
-            nombre_servicio = request.POST.get('nservicio')
-            valor_servicio  = request.POST.get('vservicio')
-            salida = modificar_servicio(id_servicio, nombre_servicio, valor_servicio)
-            if salida == 1 and nombre_servicio != '':
-                data['modificar'] = 'cambios realizados correctamente!.'
-            else:
-                data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        try:
+            if request.method == 'POST':
+                id_servicio     = request.POST.get('idservicio')
+                nombre_servicio = request.POST.get('nservicio')
+                valor_servicio  = request.POST.get('vservicio')
+                salida = modificar_servicio(id_servicio, nombre_servicio, valor_servicio)
+                if salida == 1 and nombre_servicio != '':
+                    data['modificar'] = 'cambios realizados correctamente!.'
+                else:
+                    data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        except:
+            data['modificar'] = 'hubo un error al intentar guardar los cambios.'
     
     
     return render(request, 'app/servicios.html', data)

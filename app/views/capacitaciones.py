@@ -7,44 +7,55 @@ def capacitaciones(request):
     data = {
         'capacitaciones' : lista_capacitaciones()
     }
-    #print(capacitaciones)
     
     if 'buscar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('cbocap')
-            salida  = buscar_capacitacion(id)
-            if salida:
-                data['capacitacion'] = salida
-            else:
-                data['capacitacion_no_seleccionada'] = 'debes seleccionar una capacitacion antes de buscar!.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('cbocap')
+                salida  = buscar_capacitacion(id)
+                if salida:
+                    data['capacitacion'] = salida
+                else:
+                    data['capacitacion_no_seleccionada'] = 'debes seleccionar una capacitacion antes de buscar!.'
+        except:
+            data['capacitacion_no_seleccionada'] = 'debes seleccionar una capacitacion antes de buscar!.'
 
     if 'eliminar' in request.POST:
-        if request.method == 'POST':
-            id      = request.POST.get('idcapacitacion')
-            salida  = eliminar_capacitacion(id)
-            if salida == 1 and id is not None:
-                data['eliminar'] = 'capacitacion eliminada correctamente!.'
-            else:
-                data['eliminar'] = 'hubo un error al eliminar la capacitacion.'
+        try:
+            if request.method == 'POST':
+                id      = request.POST.get('idcapacitacion')
+                salida  = eliminar_capacitacion(id)
+                if salida == 1 and id is not None:
+                    data['eliminar'] = 'capacitacion eliminada correctamente!.'
+                else:
+                    data['eliminar'] = 'hubo un error al eliminar la capacitacion.'
+        except:
+            data['eliminar'] = 'hubo un error al eliminar la capacitacion.'
 
     if 'agregar' in request.POST:
-        if request.method == 'POST':
-            nombre_servicio = request.POST.get('ncapacitacion')
-            salida = agregar_capacitacion(nombre_servicio)
-            if salida == 1:
-                data['agregar'] = 'nueva capacitacion agregada correctamente!.'
-            else:
-                data['agregar'] = 'hubo un error al intentar agregar la capacitacion.'
+        try:
+            if request.method == 'POST':
+                nombre_servicio = request.POST.get('ncapacitacion')
+                salida = agregar_capacitacion(nombre_servicio)
+                if salida == 1:
+                    data['agregar'] = 'nueva capacitacion agregada correctamente!.'
+                else:
+                    data['agregar'] = 'hubo un error al intentar agregar la capacitacion.'
+        except:
+            data['agregar'] = 'hubo un error al intentar agregar la capacitacion.'
 
     if 'guardar' in request.POST:
-        if request.method == 'POST':
-            id_capacitacion     = request.POST.get('idcapacitacion')
-            nombre_capacitacion = request.POST.get('ncapacitacion')
-            salida = modificar_capacitacion(id_capacitacion, nombre_capacitacion)
-            if salida == 1 and nombre_capacitacion != '':
-                data['modificar'] = 'cambios realizados correctamente!.'
-            else:
-                data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        try:
+            if request.method == 'POST':
+                id_capacitacion     = request.POST.get('idcapacitacion')
+                nombre_capacitacion = request.POST.get('ncapacitacion')
+                salida = modificar_capacitacion(id_capacitacion, nombre_capacitacion)
+                if salida == 1 and nombre_capacitacion != '':
+                    data['modificar'] = 'cambios realizados correctamente!.'
+                else:
+                    data['modificar'] = 'hubo un error al intentar guardar los cambios.'
+        except:
+            data['modificar'] = 'hubo un error al intentar guardar los cambios.'
     
     
     return render(request, 'app/capacitaciones.html', data)

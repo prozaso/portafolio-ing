@@ -22,12 +22,23 @@
             </span>
           <form  method="post">
               {% csrf_token %}
-            <div class="form-group first">
+            <div class="form-group first mb-4">
               {{ form.email|as_crispy_field }}
             </div>
-            <div class="form-group">
-                {{ form.razon_social|as_crispy_field }}
+            <div class="form-group mb-4">
+              {{ form.first_name|as_crispy_field }}
             </div>
+            <div class="form-group mb-4">
+              {{ form.last_name|as_crispy_field }}
+            </div>
+            <div class="form-group">
+              {{ form.razon_social|as_crispy_field }}
+            </div>
+            <div id="passwordHelpBlock" class="form-text">
+              <ul>
+                <li>Sólo si es cliente.</li>
+              </ul>
+          </div>
             <div class="form-group">
                 {{ form.rut|as_crispy_field }}
             </div>

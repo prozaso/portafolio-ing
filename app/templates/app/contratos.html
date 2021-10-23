@@ -12,12 +12,25 @@
         <!-- PRIMERA COLUMNA -->
         <div class="col border rounded m-3 p-3">
             <div class="mb-3">
+              <div class="row mb-3">
+                  <div class="col col-lg-3">
+                    <div class="input-group-text">Buscar email</div>
+                  </div>
+                  <div class="col col-lg-6">
+                    <input type="email" name="bemail" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  </div>
+                  <div class="col col-lg-2">
+                    <button type="submit" name="buscaremail" class="btn btn-primary">Buscar</button>
+                  </div>
+                </div>
+            </div>
+            <div class="mb-3">
                 <div class="row mb-3">
                     <div class="col col-lg-3">
                       <div class="input-group-text">Cliente</div>
                     </div>
                     <div class="col col-lg-6">
-                      <select class="form-select" id="cbocli" name="cbocli" form-select-sm" aria-label=".form-select-sm example">
+                      <select class="form-select" id="cbocli" name="cbocli" aria-label=".form-select-sm example">
                         <option value="0" selected>Seleccione...</option>
                         {% for c in clientes %}
                         <option value="{{ c.7 }}"> {{ c.15}} </option>
@@ -27,7 +40,7 @@
                     <div class="col col-lg-2">
                       <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="mb-3">
               {% for c in cliente %}
@@ -113,44 +126,115 @@
         
         <!-- SEGUNDA COLUMNA -->
         <div class="col border rounded m-3 p-3">
-          <div class="mb-3">
+            <div class="mb-3">
+                <div class="row mb-3">
+                  <div class="col col-lg-3">
+                    <div class="input-group-text">Rubro</div>
+                  </div>
+                  <div class="col col-lg-6">
+                    <select class="form-select" id="cborub" name="cborub" aria-label=".form-select-sm example">
+                      <option value="0" selected>Seleccione...</option>
+                      {% for r in rubros %}
+                      <option value="{{ r.0 }}"> {{ r.1 }} </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col col-lg-2">
+                  </div>
+                </div>
+            </div>
+            <div class="mb-3">
               <div class="row mb-3">
                 <div class="col col-lg-3">
-                  <div class="input-group-text">Rubro</div>
+                  <div class="input-group-text">Servicio</div>
                 </div>
                 <div class="col col-lg-6">
-                  <select class="form-select" id="cborub" name="cborub" form-select-sm" aria-label=".form-select-sm example">
+                  <select class="form-select" id="cboserv" name="cboserv" aria-label=".form-select-sm example">
                     <option value="0" selected>Seleccione...</option>
-                    {% for r in rubros %}
-                    <option value="{{ r.0 }}"> {{ r.1 }} </option>
+                    {% for s in servicios %}
+                    <option value="{{ s.0 }}"> {{ s.1 }} </option>
                     {% endfor %}
                   </select>
                 </div>
                 <div class="col col-lg-2">
                 </div>
               </div>
-          </div>
-          <div class="mb-3">
+            </div>
             <div class="row mb-3">
               <div class="col col-lg-3">
-                <div class="input-group-text">Servicio</div>
+                <div class="input-group-text">Region</div>
               </div>
               <div class="col col-lg-6">
-                <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
-                  <option value="0" selected>Seleccione...</option>
-                  {% for s in servicios %}
-                  <option value="{{ s.0 }}"> {{ s.1 }} </option>
+                <select class="form-select" id="region" name="region" onchange="cambiarComunas()" aria-label=".form-select-sm example">
+                  <option value="" selected>Seleccione...</option>
+                  {% for r in regiones %}
+                  <option value="{{ r.0 }}"> {{ r.1 }} </option>
                   {% endfor %}
                 </select>
               </div>
               <div class="col col-lg-2">
               </div>
             </div>
-          </div>
+            <div class="row mb-3">
+              <div class="col col-lg-3">
+                <div class="input-group-text">Comuna</div>
+              </div>
+              <div class="col col-lg-6">
+                <select class="form-select" id="comuna" name="comuna" aria-label=".form-select-sm example">
+                  <option value="0" selected>Seleccione...</option>
+                </select>
+              </div>
+              <div class="col col-lg-2">
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <div class="col col-lg-3">
+                <div class="input-group-text">Profesional</div>
+              </div>
+              <div class="col col-lg-6">
+                <select class="form-select" id="profesional" name="profesional" aria-label=".form-select-sm example">
+                  <option value="" selected>Seleccione...</option>
+                  {% for p in profesionales %}
+                  <option value="{{ p.15 }}"> {{ p.5}}  {{ p.6 }} </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col col-lg-2">
+              </div>
+            </div>
+        </div>
+
+        <div class="mt-3 d-grid gap-2">
+          <button type="submit" name="crearcontrato" class="btn btn-primary">Crear contrato</button>
         </div>
     </div>
-  
 </form>
+
+<!-- MENSAJES -->
+<div>
+  {% if mensaje_contrato %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ mensaje_contrato }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+<script>
+  function cambiarComunas() {
+    let regionId = document.getElementById('region').value;
+    let url = '/comunas/?region='+regionId;
+    fetch(url)
+    .then(function(result) {
+      return result.text();
+    })
+    .then(function(result) {
+      document.getElementById('comuna').innerHTML = result;
+    })
+
+  }
+</script>
 
 
 {% endif %}
