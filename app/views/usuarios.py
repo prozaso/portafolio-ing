@@ -10,14 +10,13 @@ def registro_usuarios(request):
             form = RegistroUsuariosForm(request.POST)
             if form.is_valid():
                 user = form.save()
-                msg  = 'Usuario creado.'
-                return redirect('login')
+                msg  = 'usuario creado correctamente.'
             else:
-                msg = 'Datos invalidos.'
+                msg = 'datos invalidos.'
         else:
             form = RegistroUsuariosForm()
     except:
-        msg = 'Datos invalidos.'
+        msg = 'datos invalidos.'
 
     return render(request,'registration/registro_usuarios.html', {'form': form, 'msg': msg})
 

@@ -54,7 +54,9 @@
               {% if user.es_administrador %}
                 <ul class="dropdown-menu $yellow-200" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{% url 'registro_usuarios' %}">Registrar usuario</a></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'contratos' %}">Gestionar contratos</a></li>
+                  <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'servicios' %}">Gestionar servicios</a></li>
                   <li><a class="dropdown-item" href="{% url 'capacitaciones' %}">Gestionar capacitaciones</a></li>
                   <li><a class="dropdown-item" href="{% url 'rubros' %}">Gestionar rubros</a></li>

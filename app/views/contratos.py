@@ -47,6 +47,10 @@ def contratos(request):
                 servicio    = request.POST.get('cboserv')
                 comuna      = request.POST.get('comuna')
                 profesional = request.POST.get('profesional')
+
+                # CREAR CONDICION
+                # BUSCAR CLIENTE
+                # CREAR CONTRATO
             
                 salida      = crear_contrato(rubro, servicio, comuna, cliente, profesional)
                 if salida == 1:
@@ -55,8 +59,8 @@ def contratos(request):
                     data['mensaje_contrato'] = 'hubo un error al intentar crear el contrato, por favor verifique los datos.'
         except:
             data['mensaje_contrato'] = 'hubo un error al intentar crear el contrato, por favor verifique los datos.'
-
-
+    
+    
     return render(request, 'app/contratos.html', data)
 
 

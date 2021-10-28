@@ -1,0 +1,18 @@
+INSERT INTO rubro(nombre_rub) VALUES('Agricultura, Ganadería, Caza y Silvicultura');
+INSERT INTO rubro(nombre_rub) VALUES('Pesca');
+INSERT INTO rubro(nombre_rub) VALUES('Explotación de Minas y Canteras');
+INSERT INTO rubro(nombre_rub) VALUES('Industrias Manufactureras No Metálicas');
+INSERT INTO rubro(nombre_rub) VALUES('Industrias Manufactureras Metálicas');
+INSERT INTO rubro(nombre_rub) VALUES('Suministro de Electricidad, Gas y Agua');
+INSERT INTO rubro(nombre_rub) VALUES('Construcción');
+INSERT INTO rubro(nombre_rub) VALUES('Comercio al por Mayor y Menor, Rep. Veh. Automotores / Enseres Domésticos');
+INSERT INTO rubro(nombre_rub) VALUES('Hoteles y Restaurantes');
+INSERT INTO rubro(nombre_rub) VALUES('Transporte, Almacenamiento y Comunicaciones');
+INSERT INTO rubro(nombre_rub) VALUES('Intermediación Financiera');
+INSERT INTO rubro(nombre_rub) VALUES('Actividades Inmobiliarias, Empresariales y de Alquiler');
+INSERT INTO rubro(nombre_rub) VALUES('Adm. Pública y Defensa, Planes de Seg. Social Afiliación Obligatoria');
+INSERT INTO rubro(nombre_rub) VALUES('Enseñanza');
+INSERT INTO rubro(nombre_rub) VALUES('Servicios Sociales y de Salud');
+INSERT INTO rubro(nombre_rub) VALUES('Otras Actividades de Servicios Comunitarias, Sociales y Personales');
+INSERT INTO rubro(nombre_rub) VALUES('Consejo De Administración de Edificios y Condominios');
+INSERT INTO rubro(nombre_rub) VALUES('Organizaciones Y Órganos Extraterritoriales');
