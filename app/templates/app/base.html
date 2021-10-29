@@ -46,11 +46,9 @@
           </ul>
         </div>
         
-
-        
         <div class="nav-item dropdown">
           {% if user.is_authenticated %}
-              <a class="btn btn-light dropdown-toggle" href="#" id="user" name="user" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
+              <a class="btn btn-light dropdown-toggle shadow" href="#" id="user" name="user" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
               {% if user.es_administrador %}
                 <ul class="dropdown-menu $yellow-200" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{% url 'registro_usuarios' %}">Registrar usuario</a></li>
@@ -79,11 +77,10 @@
                 </ul>
               {% endif %}
           {% else %}
-              <a class="btn btn-warning border border-dark" href="{% url 'login' %}">Ingresar</a>
+              <a class="btn btn-warning border border-dark shadow" href="{% url 'login' %}">Ingresar</a>
           {% endif %}
         </div>
         
-                
       </div>
     </nav>
     <!-- FIN NAVBAR -->
@@ -92,17 +89,12 @@
   
   <body>
 
-
-    <div class="container border rounded p-5 mb-5">
+    <div class="container border rounded b-5">
       <div class="row justify-content-center">
-
           {% block contenido %}
           {% endblock %}
-
       </div>
     </div>
-
-
 
     {% block javascript %}
     <!-- Latest compiled and minified JavaScript -->

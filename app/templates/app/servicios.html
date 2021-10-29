@@ -7,7 +7,9 @@
 
 
 <form action="" method="POST">
-    {% csrf_token %}
+
+  <div class="row shadow p-3">
+      {% csrf_token %}
     <div class="row mb-3">
       <div class="col col-lg-2">
         <div class="input-group-text">Servicio</div>
@@ -98,6 +100,8 @@
       <button type="submit" name="agregar"  class="btn btn-success">  Guardar nuevo</button>
       <button type="submit" name="eliminar" class="btn btn-danger">   Eliminar</button>
     </div>
+  </div>
+    
 </form>
   
 <!-- MENSAJES -->
