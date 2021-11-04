@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import views, servicios, usuarios, capacitaciones, rubros, contratos
+
+from app.views.accidentes import accidentes
+from .views import views, servicios, usuarios, capacitaciones, rubros, contratos, accidentes
 
 
 urlpatterns = [
@@ -9,6 +11,7 @@ urlpatterns = [
     path('capacitaciones', capacitaciones.capacitaciones, name='capacitaciones'),
     path('rubros', rubros.rubros, name='rubros'),
     path('contratos', contratos.contratos, name='contratos'),
-    path('comunas/', contratos.select_comuna_por_region, name='select_comuna_por_region')
+    path('comunas/', contratos.select_comuna_por_region, name='select_comuna_por_region'),
+    path('accidentes', accidentes.accidentes, name='accidentes'),
 
 ]

@@ -17,7 +17,7 @@
     <!-- EMPIEZA NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow p-3 mb-5 rounded-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand " href="{% url 'home' %}">
+        <a class="navbar-brand" href="{% url 'home' %}">
           <img id="icono" src="{% static 'app/img/icono.png' %}" alt="" width="60" height="60">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,7 @@
                 </ul>
               {% else %}
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="">Opcion 1</a></li>
+                  <li><a class="dropdown-item" href="{% url 'accidentes' %}">Accidentes</a></li>
                   <li><a class="dropdown-item" href="#">Opcion 2</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Salir</a></li>
@@ -87,11 +87,12 @@
 
   </head>
   
-  <body>
+  <body class="bg-light">
 
     <div class="container border rounded b-5">
       <div class="row justify-content-center">
           {% block contenido %}
+          
           {% endblock %}
       </div>
     </div>

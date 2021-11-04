@@ -1,1 +1,0 @@
-INSERT INTO servicio(nombre_serv, valor_serv) VALUES('Visitas preventivas', 399990);

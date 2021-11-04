@@ -5,12 +5,11 @@
 
 {% if user.es_administrador %}
 
-
 <form action="" method="post">
-  {% csrf_token %}
-    <div class="row shadow">
+    {% csrf_token %}
+    <div class="row shadow bg-warning bg-opacity-75">
         <!-- PRIMERA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow">
+        <div class="col border rounded m-3 p-3 shadow bg-white">
             <div class="input-group mb-3">
               <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Buscar email</span>
               <input type="email" name="bemail" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -69,7 +68,7 @@
         </div>
         
         <!-- SEGUNDA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow">
+        <div class="col border rounded m-3 p-3 shadow bg-white">
             <div class="input-group mb-3">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Rubro</label>
               <select class="form-select" id="cborub" name="cborub">
@@ -80,7 +79,7 @@
               </select>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-1">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Servicio</label>
               <select class="form-select" id="cboserv" name="cboserv">
                 <option value="0" selected>Seleccione...</option>
@@ -88,6 +87,12 @@
                 <option value="{{ s.0 }}"> {{ s.1 }} </option>
                 {% endfor %}
               </select>
+            </div>
+            <div>
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-sm btn-primary m-1" onclick="crear()">Agregar nuevo servicio</button>
+              </div>
+              <p id="container"></p>
             </div>
 
             <div class="input-group mb-3">
@@ -139,6 +144,10 @@
               </div>
             </div>
 
+            
+            
+            
+
         </div>
 
         <div class="mt-3 d-grid gap-2 mb-3">
@@ -155,8 +164,8 @@
   </div>
   {% endif %}
 </div>
-<!-- FIN MENSAJES -->
 
+<!-- REGIONES - COMUNAS -->
 <script>
   function cambiarComunas() {
     let regionId = document.getElementById('region').value;
@@ -168,10 +177,43 @@
     .then(function(result) {
       document.getElementById('comuna').innerHTML = result;
     })
-
   }
 </script>
 
+<!-- NUEVOS DIVS SERVICIOS -->
+<script>
+  let cont = 0;
+
+  function crear() {
+
+    let creardiv = document.createElement("div");
+      cont++;
+        creardiv.innerHTML = 
+        "<div class='input-group input-group-sm'>"+
+          "<label class='input-group-text' for='inputGroupSelect01'>Servicio</label>"+
+          "<select class='form-select' id='cboserv' name='cboserv"+cont+"'>"+
+            "<option value='0' selected>Seleccione...</option>"+
+            "{% for s in servicios %}"+
+            "<option value='{{ s.0 }}'> {{ s.1 }} </option>"+
+            "{% endfor %}"+
+          "</select>"+
+        "</div>"+
+        "<button type='button' class='btn btn-sm btn-danger col-12 mb-1 border-5 border-white bg-opacity-25' onclick='borrarUno(this)'>Eliminar</button>";
+        document.getElementById("container").appendChild(creardiv);
+  }
+
+  function borrar() {
+    let borrardiv = document.getElementById("container").lastChild;
+      document.getElementById("container").removeChild(borrardiv);
+      cont--;
+  }
+
+  function borrarUno(boton) {
+    let borrardiv = boton.parentNode;
+    document.getElementById("container").removeChild(borrardiv);
+  }
+
+</script>
 
 {% endif %}
 

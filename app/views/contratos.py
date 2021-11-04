@@ -41,18 +41,27 @@ def contratos(request):
     if 'crearcontrato' in request.POST:
         try:
             if request.method == 'POST':
+
                 #username    = request.user.get_username()
                 cliente      = request.POST.get('rutempresa')
-                rubro       = request.POST.get('cborub')
-                servicio    = request.POST.get('cboserv')
-                comuna      = request.POST.get('comuna')
-                profesional = request.POST.get('profesional')
+                rubro        = request.POST.get('cborub')
+                comuna       = request.POST.get('comuna')
+                profesional  = request.POST.get('profesional')
+                servicio     = request.POST.get('cboserv')
+
+                # TRAER NAMES DE LOS DROPDOWN DE SERVICIO
+                agregar_servicio_plan(cliente, servicio)
+                for x in range(30):
+                    cbo_serv = 'cboserv'+str(x)
+                    serv     = request.POST.get(cbo_serv)
+                    if serv != None:
+                        agregar_servicio_plan(cliente, serv)
 
                 # CREAR CONDICION
                 # BUSCAR CLIENTE
                 # CREAR CONTRATO
             
-                salida      = crear_contrato(rubro, servicio, comuna, cliente, profesional)
+                salida      = crear_contrato(rubro, comuna, cliente, profesional)
                 if salida == 1:
                     data['mensaje_contrato'] = 'contrato creado correctamente!.'
                 else:
@@ -197,11 +206,21 @@ def select_comuna_por_region(request):
     return render(request, 'app/select_comunas.html', data)
 
 
-def crear_contrato(rubro, servicio, comuna, cliente, profesional):
+def crear_contrato(rubro, comuna, cliente, profesional):
 
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
     salida = cursor.var(cx_Oracle.NUMBER)
-    cursor.callproc('SP_CREAR_CONTRATO', [rubro, servicio, comuna, cliente, profesional, salida])
+    cursor.callproc('SP_CREAR_CONTRATO', [rubro, comuna, cliente, profesional, salida])
+
+    return salida.getvalue()
+
+
+def agregar_servicio_plan(cliente, servicio):
+
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    salida = cursor.var(cx_Oracle.NUMBER)
+    cursor.callproc('SP_AGREGAR_SERVICIO_PLAN', [cliente, servicio, salida])
 
     return salida.getvalue()

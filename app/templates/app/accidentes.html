@@ -1,0 +1,73 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_cliente %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row shadow">
+        <!-- PRIMERA COLUMNA -->
+        <div class="col border rounded m-3 p-3 shadow">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Fecha del accidente</span>
+                <input type="date" name="fecha_acc" class="form-control" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Gravedad</label>
+                <select class="form-select" name="gravedad" id="inputGroupSelect01">
+                    <option value="0" selected>Seleccione...</option>
+                    {% for g in gravedades %}
+                    <option value="{{ g.0 }}"> {{ g.1 }} </option>
+                    {% endfor %}
+                </select>
+              </div>
+            <div class="form-floating">
+                <textarea class="form-control" name="detalle_acc" placeholder="Escriba aquí" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Explique lo sucedido</label>
+            </div>
+            <div class="mt-3 d-grid gap-2 mb-3">
+                <button type="submit" name="ingresar" class="btn btn-primary">Enviar accidente</button>
+            </div>
+
+            <!-- MENSAJES -->
+            <div>
+                {% if ingresar %}
+                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>Hola!, </strong> {{ ingresar }}
+                </div>
+                {% endif %}
+            </div>
+            <!-- FIN MENSAJES -->
+            
+        </div>
+        
+        <!-- SEGUNDA COLUMNA -->
+        <div class="col border rounded m-3 p-3 shadow">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item border rounded">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <table class="table table-warning table-sm table-responsive-sm m-0">
+                            <thead>
+                                <tr>
+                                <th scope="col">Fecha: </th>
+                                <th scope="col">Gravedad: </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endif %}
+
+{% endblock %}
