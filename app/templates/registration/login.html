@@ -19,29 +19,25 @@
     
 {% endif %}
 
-<div class="row shadow p-3">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
 
-    <div class="row justify-content-center">
-        <div class="col-md-6 contents">
-            <div class="row justify-content-center">
-                <form method="post" action="{% url 'login' %}">
-                {% csrf_token %}
-                <div class="col-md-12 mb-3">
-                    <h2>Log in</h2>
-                    <input type="hidden" name="next" value="{{ next }}">
-                    {{ form.username|as_crispy_field }}
-                    {{ form.password|as_crispy_field }}
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                </div>
-                {# Assumes you setup the password_reset view in your URLconf #}
-                <p><a href="{% url 'password_reset' %}">Olvidó la contraseña?</a></p>
-                </form>
+    <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+        <div class="col-6 border rounded m-3 p-3 shadow bg-white">
+            <div class="col-md-12 mb-3">
+                <h2>Log in</h2>
+                <input type="hidden" name="next" value="{{ next }}">
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
             </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Olvidó la contraseña?</a></p>
         </div>
     </div>
-
-</div>
+                
+</form>
 
 {% endblock %}

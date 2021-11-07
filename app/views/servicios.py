@@ -77,7 +77,11 @@ def lista_servicios():
     for fila in out_cur:
         lista.append(fila)
 
-    return lista
+    servicios = []
+    for x in range(0, 3):
+        servicios.append(lista[x])
+
+    return servicios
 
 
 def servicio_buscar(servid):

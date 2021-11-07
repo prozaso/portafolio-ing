@@ -24,28 +24,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-        </div>
-        
         <div class="nav-item dropdown">
           {% if user.is_authenticated %}
               <a class="btn btn-light dropdown-toggle shadow" href="#" id="user" name="user" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user.email }}</a>
@@ -63,7 +41,6 @@
                 </ul>
               {% elif user.es_profesional %}
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="">Opcion 1</a></li>
                   <li><a class="dropdown-item" href="#">Opcion 2</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Salir</a></li>
@@ -71,8 +48,8 @@
               {% else %}
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{% url 'accidentes' %}">Accidentes</a></li>
-                  <li><a class="dropdown-item" href="#">Opcion 2</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" type="submit" href="{% url 'perfil_cliente' %}">Mi Perfil</a></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Salir</a></li>
                 </ul>
               {% endif %}

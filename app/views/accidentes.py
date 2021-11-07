@@ -4,9 +4,13 @@ import cx_Oracle
 
 def accidentes(request):
 
+    user = request.user.get_username()
+
     data = {
-        'gravedades' : lista_gravedades()
+        'gravedades' : lista_gravedades(),
+        'accidentes' : lista_accidentes(user)
     }
+
     
     if 'buscar' in request.POST:
         try:
@@ -52,13 +56,13 @@ def accidentes(request):
     return render(request, 'app/accidentes.html', data)
 
 
-def lista_accidentes():
+def lista_accidentes(cliente):
 
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
     out_cur = django_cursor.connection.cursor()
 
-    cursor.callproc("SP_LISTAR_RUBROS", [out_cur])
+    cursor.callproc("SP_LISTAR_ACCIDENTES", [cliente, out_cur])
 
     lista = []
     for fila in out_cur:
@@ -88,7 +92,7 @@ def buscar_accidente(accid):
     cursor = django_cursor.connection.cursor()
     out_cur = django_cursor.connection.cursor()
 
-    cursor.callproc("SP_BUSCAR_RUBRO", [rubid, out_cur])
+    cursor.callproc("SP_BUSCAR_ACCIDENTE", [accid, out_cur])
 
     lista = []
     for fila in out_cur:
