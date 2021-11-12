@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 import cx_Oracle
 
@@ -29,6 +29,7 @@ def servicios(request):
                 salida  = eliminar_servicio(id)
                 if salida == 1 and id is not None:
                     data['eliminar'] = 'servicio eliminado correctamente!.'
+                    return redirect('servicios')
                 else:
                     data['eliminar'] = 'hubo un error al eliminar el servicio.'
         except:
@@ -42,6 +43,7 @@ def servicios(request):
                 salida = agregar_servicio(nombre_servicio, valor_servicio)
                 if salida == 1:
                     data['agregar'] = 'nuevo servicio agregado correctamente!.'
+                    return redirect('servicios')
                 else:
                     data['agregar'] = 'hubo un error al intentar agregar el servicio.'
         except:
@@ -56,6 +58,7 @@ def servicios(request):
                 salida = modificar_servicio(id_servicio, nombre_servicio, valor_servicio)
                 if salida == 1 and nombre_servicio != '':
                     data['modificar'] = 'cambios realizados correctamente!.'
+                    return redirect('servicios')
                 else:
                     data['modificar'] = 'hubo un error al intentar guardar los cambios.'
         except:

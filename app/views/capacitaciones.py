@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 import cx_Oracle
 
@@ -27,6 +27,7 @@ def capacitaciones(request):
                 salida  = eliminar_capacitacion(id)
                 if salida == 1 and id is not None:
                     data['eliminar'] = 'capacitacion eliminada correctamente!.'
+                    return redirect('capacitaciones')
                 else:
                     data['eliminar'] = 'hubo un error al eliminar la capacitacion.'
         except:
@@ -39,6 +40,7 @@ def capacitaciones(request):
                 salida          = agregar_capacitacion(nombre_servicio)
                 if salida == 1:
                     data['agregar'] = 'nueva capacitacion agregada correctamente!.'
+                    return redirect('capacitaciones')
                 else:
                     data['agregar'] = 'hubo un error al intentar agregar la capacitacion.'
         except:
@@ -52,6 +54,7 @@ def capacitaciones(request):
                 salida = modificar_capacitacion(id_capacitacion, nombre_capacitacion)
                 if salida == 1 and nombre_capacitacion != '':
                     data['modificar'] = 'cambios realizados correctamente!.'
+                    return redirect('capacitaciones')
                 else:
                     data['modificar'] = 'hubo un error al intentar guardar los cambios.'
         except:

@@ -1,5 +1,5 @@
 #from typing_extensions import runtime
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 import cx_Oracle
 
@@ -15,6 +15,25 @@ def registro_capacitaciones(request):
         'clientes'       : lista_clientes(),
         'det_cap'        : buscar_detalle_capacitacion_activas(user)
     }
+    
+    #####!!!!!!!!!!!!
+    if 'agregar_grupo':
+            if request.method == 'POST':
+                det_cap      = request.POST.get('det_cap_id')
+                rut          = request.POST.get('rut')
+                nombre       = request.POST.get('nombre')
+                registrar_empleado_capacitacion(det_cap, rut, nombre)
+
+                try:
+                    for x in range(30):
+                        rut      = 'rut'+str(x)
+                        nombre   = 'nombre'+str(x)
+                        rut_n    = request.POST.get(rut)
+                        nombre_n = request.POST.get(nombre)
+                        if det_cap != None:
+                            registrar_empleado_capacitacion(det_cap, rut_n, nombre_n)
+                except:
+                    data['grupo'] = 'hubo un error al intentar registrar a los empleados.'
 
     # FORM ADMIN
     try:
@@ -35,6 +54,7 @@ def registro_capacitaciones(request):
                 salida_guardar = registrar_capacitacion_cliente(capacitacion, fecha, cliente)
                 if salida_guardar == 1:
                     data['guardar'] = 'registro realizado correctamente!.'
+                    return redirect('registro_capacitaciones')
                 #else:
                     #data['guardar'] = 'hubo un error al intentar realizar el registro.'
 
@@ -50,7 +70,7 @@ def registro_capacitaciones(request):
     except:
             data['operacion'] = 'hubo un error al intentar realizar la operación.'
 
-    
+
     # FORM CLIENTE
     try:
         if 'agregar_grupo':
@@ -58,6 +78,11 @@ def registro_capacitaciones(request):
                 det_cap      = request.POST.get('det_cap_id')
                 rut          = request.POST.get('rut')
                 nombre       = request.POST.get('nombre')
+                print(request.POST.get('det_cap_id'))
+                print(request.POST.get('rut'))
+                print(request.POST.get('nombre'))
+                print(user)
+
                 registrar_empleado_capacitacion(det_cap, rut, nombre)
 
                 try:

@@ -8,7 +8,7 @@ def perfil_cliente(request):
     user          = request.user.get_username()
     cliente       = buscar_plan_cliente(user)
     datos_cliente = []
-    #print(len(cliente))
+    print(cliente)
 
     try:
         for x in range(0, 5):
@@ -17,10 +17,10 @@ def perfil_cliente(request):
         for x in range(0, 3):
             datos_cliente.append(cliente[x][5])
     except:
-        print(len(cliente))
+        pass
 
     data = {
-        'cliente'      : datos_cliente
+        'cliente' : datos_cliente
     }
 
     return render(request, 'app/perfil_cliente.html', data)

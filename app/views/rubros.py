@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 import cx_Oracle
 
@@ -27,6 +27,7 @@ def rubros(request):
                 salida  = eliminar_rubro(id)
                 if salida == 1 and id is not None:
                     data['eliminar'] = 'rubro eliminado correctamente!.'
+                    return redirect('rubros')
                 else:
                     data['eliminar'] = 'hubo un error al eliminar el rubro.'
         except:
@@ -39,6 +40,7 @@ def rubros(request):
                 salida       = agregar_rubro(nombre_rubro)
                 if salida == 1:
                     data['agregar'] = 'nuevo rubro agregado correctamente!.'
+                    return redirect('rubros')
                 else:
                     data['agregar'] = 'hubo un error al intentar agregar el rubro.'
         except:
@@ -52,6 +54,7 @@ def rubros(request):
                 salida       = modificar_rubro(id_rubro, nombre_rubro)
                 if salida == 1 and nombre_rubro != '':
                     data['modificar'] = 'cambios realizados correctamente!.'
+                    return redirect('rubros')
                 else:
                     data['modificar'] = 'hubo un error al intentar guardar los cambios.'
         except:

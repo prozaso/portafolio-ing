@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.db import connection
 import cx_Oracle
 
@@ -33,6 +33,7 @@ def accidentes(request):
                 salida   = ingresar_accidente(username, fecha, gravedad, detalle)
                 if salida == 1:
                     data['ingresar'] = 'accidente ingresado correctamente!.'
+                    return redirect('accidentes')
                 else:
                     data['ingresar'] = 'hubo un error al intentar ingresar los datos.'
         except:
