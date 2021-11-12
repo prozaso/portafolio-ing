@@ -11,7 +11,6 @@ def accidentes(request):
         'accidentes' : lista_accidentes(user)
     }
 
-    
     if 'buscar'   in request.POST:
         try:
             if request.method == 'POST':

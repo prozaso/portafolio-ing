@@ -6,8 +6,8 @@
 {% if user.es_administrador %}
 <form action="" method="POST">
   {% csrf_token %}
-  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
-    <div class="col-6 border rounded m-3 p-3 shadow bg-white">
+  <div class="row shadow bg-warning">
+    <div class="col border rounded m-3 p-3 shadow bg-white">
         <div class="input-group mb-3">
             <span class="input-group-text col-lg-5" id="inputGroup-sizing-default">Cliente</span>
             <select class="form-select" id="cbocli" name="cbocli">
@@ -16,8 +16,8 @@
                 <option value="{{ c.7 }}"> {{ c.15 }} </option>
                 {% endfor %}
             </select>
+            <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
         </div>
-
         <div class="input-group mb-3">
             <span class="input-group-text col-lg-5" id="inputGroup-sizing-default">Capacitación</span>
             <select class="form-select" id="cbocap" name="cbocap" form-select-sm" aria-label=".form-select-sm example">
@@ -27,16 +27,45 @@
             {% endfor %}
             </select>
         </div>
-    
         <div class="input-group mb-3">
             <span class="input-group-text col-lg-5" id="basic-addon1">Fecha de capacitación</span>
             <input type="date" name="fecha_cap" class="form-control" aria-describedby="basic-addon1">
         </div>
-    
-        <div class="input-group mb-1">
-            <button type="submit" name="guardar" class="btn btn-primary col-6 border-white">Guardar</button>
+        <div class="d-grid gap-2">
+            <button type="submit" name="guardar" class="btn btn-primary">Guardar</button>
         </div>
-    
+    </div>
+
+    <div class="col border rounded m-3 p-3 shadow bg-white">
+      <div class="input-group mb-3">
+        <label class="input-group-text col-lg-3" for="inputGroupSelect01">Capacitación</label>
+        <select class="form-select" name="det_cap_id" id="inputGroupSelect01">
+            <option value="0" selected>Seleccione...</option>
+            {% for d in det_caps %}
+            <option value="{{ d.0 }}"> [Codigo: {{ d.0 }}] {{ d.2 }} - {{ d.1 }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="lista" class="btn btn-primary">Ver empleados</button>
+      </div>
+      <table class="table table-sm border border-warning shadow p-5">
+        <thead class="table-warning">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">RUT</th>
+            <th scope="col">NOMBRE</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for l in lista %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ l.1 }}</td>
+            <td>{{ l.0 }}</td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
     </div>
   </div>
 </form>
@@ -91,6 +120,9 @@
         <p id="container"></p>
       </div>
     </div>
+    <div class="d-grid gap-2 justify-content-end">
+      <button type="submit" name="agregar_grupo" class="btn btn-primary mb-3">Agregar grupo a la capacitación</button>
+    </div>
   </div>
 </form>
 {% endif %}
@@ -100,6 +132,21 @@
   {% if guardar %}
   <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
     <strong>Hola!, </strong> {{ guardar }}
+  </div>
+  {% endif %}
+  {% if grupo %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ lista }}
+  </div>
+  {% endif %}
+  {% if det_caps_err %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ det_caps }}
+  </div>
+  {% endif %}
+  {% if operacion %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ operacion }}
   </div>
   {% endif %}
 </div>

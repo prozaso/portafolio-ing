@@ -7,7 +7,7 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <div class="row shadow bg-warning bg-opacity-75">
+    <div class="row shadow bg-warning">
         <!-- PRIMERA COLUMNA -->
         <div class="col border rounded m-3 p-3 shadow bg-white">
             <div class="input-group mb-3">
@@ -46,13 +46,30 @@
         <!-- SEGUNDA COLUMNA -->
         <div class="col border rounded m-3 p-3 shadow bg-white">
             <div class="accordion accordion-flush" id="accordionFlushExample">
-                
-
-
+                <table class="table table-sm border border-warning shadow p-5">
+                    <thead class="table-warning">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FECHA</th>
+                        <th scope="col">GRAVEDAD</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in accidentes %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ a.0 }}</td>
+                        <td>{{ a.1 }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
             </div>
         </div>
     </div>
 </form>
+
+
 
 {% endif %}
 
