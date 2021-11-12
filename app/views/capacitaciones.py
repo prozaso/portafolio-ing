@@ -8,7 +8,7 @@ def capacitaciones(request):
         'capacitaciones' : lista_capacitaciones()
     }
     
-    if 'buscar' in request.POST:
+    if 'buscar'   in request.POST:
         try:
             if request.method == 'POST':
                 id      = request.POST.get('cbocap')
@@ -32,11 +32,11 @@ def capacitaciones(request):
         except:
             data['eliminar'] = 'hubo un error al eliminar la capacitacion.'
 
-    if 'agregar' in request.POST:
+    if 'agregar'  in request.POST:
         try:
             if request.method == 'POST':
                 nombre_servicio = request.POST.get('ncapacitacion')
-                salida = agregar_capacitacion(nombre_servicio)
+                salida          = agregar_capacitacion(nombre_servicio)
                 if salida == 1:
                     data['agregar'] = 'nueva capacitacion agregada correctamente!.'
                 else:
@@ -44,7 +44,7 @@ def capacitaciones(request):
         except:
             data['agregar'] = 'hubo un error al intentar agregar la capacitacion.'
 
-    if 'guardar' in request.POST:
+    if 'guardar'  in request.POST:
         try:
             if request.method == 'POST':
                 id_capacitacion     = request.POST.get('idcapacitacion')

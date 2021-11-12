@@ -1,0 +1,143 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_administrador %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 border rounded m-3 p-3 shadow bg-white">
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-5" id="inputGroup-sizing-default">Cliente</span>
+            <select class="form-select" id="cbocli" name="cbocli">
+                <option value="0" selected>Seleccione...</option>
+                {% for c in clientes %}
+                <option value="{{ c.7 }}"> {{ c.15 }} </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-5" id="inputGroup-sizing-default">Capacitación</span>
+            <select class="form-select" id="cbocap" name="cbocap" form-select-sm" aria-label=".form-select-sm example">
+            <option value="0" selected>Seleccione...</option>
+            {% for c in capacitaciones %}
+            <option value="{{ c.0 }}"> {{ c.1 }} </option>
+            {% endfor %}
+            </select>
+        </div>
+    
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-5" id="basic-addon1">Fecha de capacitación</span>
+            <input type="date" name="fecha_cap" class="form-control" aria-describedby="basic-addon1">
+        </div>
+    
+        <div class="input-group mb-1">
+            <button type="submit" name="guardar" class="btn btn-primary col-6 border-white">Guardar</button>
+        </div>
+    
+    </div>
+  </div>
+</form>
+{% endif %}
+
+{% if user.es_cliente %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="row shadow bg-warning bg-opacity-75">
+    <!-- PRIMERA COLUMNA -->
+    <div class="col border rounded m-3 shadow bg-white">
+      {% for d in det_cap %}
+      <div class="card text-center mb-3 mt-3">
+        <div class="card-header bg-warning">
+          Capacitación
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ d.1 }}</p>
+          <h5 class="card-title">Fecha: {{ d.2 }}</h5>
+          <p class="fw-lighter m-0">CODIGO: {{ d.0 }}</p>
+        </div>
+        <div class="card-footer bg-warning">
+          Días restantes <span class="badge bg-primary">{{ d.3 }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- SEGUNDA COLUMNA -->
+    <div class="col border rounded m-3 shadow bg-white">
+      <div class="input-group mb-3 mt-3">
+        <label class="input-group-text col-lg-4" for="inputGroupSelect01">Capacitación</label>
+        <select class="form-select" name="det_cap_id" id="inputGroupSelect01">
+            <option value="0" selected>Seleccione...</option>
+            {% for d in det_cap %}
+            <option value="{{ d.0 }}"> [Codigo: {{ d.0 }}] {{ d.2 }} - {{ d.1 }}</option>
+            {% endfor %}
+        </select>
+        <div class="input-group mb-3 mt-3">
+          <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Rut</span>
+          <input type="text" name="rut" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre completo</span>
+          <input type="text" name="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </div>
+      <div>
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-sm btn-primary m-1" onclick="crear()">Agregar nuevo empleado</button>
+        </div>
+        <p id="container"></p>
+      </div>
+    </div>
+  </div>
+</form>
+{% endif %}
+
+<!-- MENSAJES -->
+<div>
+  {% if guardar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ guardar }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+<!-- NUEVOS DIVS EMPLEADO -->
+<script>
+  let cont = 0;
+
+  function crear() {
+
+    let creardiv = document.createElement("div");
+      cont++;
+        creardiv.innerHTML = 
+        "<div class='input-group input-group-sm mb-3 mt-3'>"+
+          "<span class='input-group-text col-lg-4' id='inputGroup-sizing-default'>Rut</span>"+
+          "<input type='text' name='rut"+cont+"' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>"+
+        "</div>"+
+        "<div class='input-group input-group-sm'>"+
+          "<span class='input-group-text col-lg-4' id='inputGroup-sizing-default'>Nombre completo</span>"+
+          "<input type='text' name='nombre"+cont+"' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default'>"+
+        "</div>"+
+        "<button type='button' class='btn btn-sm btn-danger col-12 mb-1 border-5 border-white bg-opacity-25' onclick='borrarUno(this)'>Eliminar</button>";
+        document.getElementById("container").appendChild(creardiv);
+  }
+
+  function borrar() {
+    let borrardiv = document.getElementById("container").lastChild;
+      document.getElementById("container").removeChild(borrardiv);
+      cont--;
+  }
+
+  function borrarUno(boton) {
+    let borrardiv = boton.parentNode;
+    document.getElementById("container").removeChild(borrardiv);
+  }
+
+</script>
+
+
+{% endblock %}

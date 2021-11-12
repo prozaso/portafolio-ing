@@ -10,7 +10,7 @@ def servicios(request):
     }
     #print(servicios)
     
-    if 'buscar' in request.POST:
+    if 'buscar'   in request.POST:
         try:
             if request.method == 'POST':
                 id      = request.POST.get('cboserv')
@@ -34,7 +34,7 @@ def servicios(request):
         except:
             data['eliminar'] = 'hubo un error al eliminar el servicio.'
 
-    if 'agregar' in request.POST:
+    if 'agregar'  in request.POST:
         try:
             if request.method == 'POST':
                 nombre_servicio = request.POST.get('nservicio')
@@ -47,7 +47,7 @@ def servicios(request):
         except:
             data['agregar'] = 'hubo un error al intentar agregar el servicio.'
 
-    if 'guardar' in request.POST:
+    if 'guardar'  in request.POST:
         try:
             if request.method == 'POST':
                 id_servicio     = request.POST.get('idservicio')

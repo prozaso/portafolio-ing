@@ -12,7 +12,7 @@ def accidentes(request):
     }
 
     
-    if 'buscar' in request.POST:
+    if 'buscar'   in request.POST:
         try:
             if request.method == 'POST':
                 id      = request.POST.get('cborub')
@@ -39,7 +39,7 @@ def accidentes(request):
         except:
             data['ingresar'] = 'hubo un error al intentar ingresar los datos.'
 
-    if 'guardar' in request.POST:
+    if 'guardar'  in request.POST:
         try:
             if request.method == 'POST':
                 id_rubro     = request.POST.get('idrubro')

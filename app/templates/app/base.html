@@ -32,6 +32,7 @@
                   <li><a class="dropdown-item" href="{% url 'registro_usuarios' %}">Registrar usuario</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'contratos' %}">Gestionar contratos</a></li>
+                  <li><a class="dropdown-item" href="{% url 'registro_capacitaciones' %}">Registro capacitaciones</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url 'servicios' %}">Gestionar servicios</a></li>
                   <li><a class="dropdown-item" href="{% url 'capacitaciones' %}">Gestionar capacitaciones</a></li>
@@ -47,7 +48,8 @@
                 </ul>
               {% else %}
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'accidentes' %}">Accidentes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'accidentes' %}">Registro accidentes</a></li>
+                  <li><a class="dropdown-item" href="{% url 'registro_capacitaciones' %}">Registro capacitaciones</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" type="submit" href="{% url 'perfil_cliente' %}">Mi Perfil</a></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Salir</a></li>
@@ -83,14 +85,44 @@
   </body>
 
   <!-- EMPIEZA FOOTER -->
-  <!-- <footer>
-      <div class="card text-center bg-warning">
-          <div class="card-body">
-            <h5 class="card-title">No más accidentes</h5>
-            <img id="icono" src="{% static 'app/img/icono.png' %}" alt="" width="60" height="60">
-          </div>
+  <footer class="footer mt-5 border-top navbar-fixed-bottom">
+    <div class="container-sm mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0 text-center">
+                <h3 class="mb-4">Tipos de servicio</h3>
+                <nav class="d-flex flex-column">
+                    <a class="text-dark text-decoration-none" href="#">Control y prevencion en obra</a>
+                    <a class="text-dark text-decoration-none" href="#">Capacitaciones</a>
+                    <a class="text-dark text-decoration-none" href="#">Visitas programadas</a>
+                    <a class="text-dark text-decoration-none" href="#">Informes de mejoras</a>
+                    <a class="text-dark text-decoration-none" href="#">Tipos de plan</a>
+                </nav>
+            </div>
+  
+            <div class="col-md-4 mb-4 mb-md-0 text-center">
+                <h3 class="mb-4">Sobre Nosotros</h3>
+                <nav class="d-flex flex-column">
+                    <a class="text-dark text-decoration-none" href="#">Nuestra Historia</a>
+                    <a class="text-dark text-decoration-none" href="#">Misión, Visión y Valores</a>
+                    <a class="text-dark text-decoration-none" href="#">Rubros</a>
+                    <a class="text-dark text-decoration-none" href="#">Nuestros Profesionales</a>
+                    <a class="text-dark text-decoration-none" href="#">Política de Privacidad</a>
+                </nav>
+            </div>
+  
+            <div class="col-md-4 mb-4 mb-md-0 text-center">
+                <h3 class="mb-4">Soporte y ayuda</h3>
+                <nav class="d-flex flex-column">
+                    <a class="text-dark text-decoration-none" href="#">Preguntas Frecuentes</a>
+                    <a class="text-dark text-decoration-none" href="#">Ayuda en Línea</a>
+                    <a class="text-dark text-decoration-none" href="#">Confianza y Seguridad</a>
+                </nav>
+            </div>
         </div>
-  </footer> -->
+  
+        <p class="mt-5 text-center fs-6">Todos los derechos Reservados. No Mas accidentes.Inc</p>
+    </div>
+  </footer>
   <!-- FIN FOOTER -->
 
 </html>

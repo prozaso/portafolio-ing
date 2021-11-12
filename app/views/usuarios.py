@@ -10,10 +10,7 @@ def registro_usuarios(request):
     try:
         msg = None
         if request.method == 'POST':
-            #print(request.POST.get('email'))
-            #print(request.POST.get('es_cliente'))
             form = RegistroUsuariosForm(request.POST)
-            #print(form)
             if form.is_valid():
                 user = form.save()
                 if request.POST.get('es_cliente'):

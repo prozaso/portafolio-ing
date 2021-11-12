@@ -14,7 +14,7 @@ def contratos(request):
         'profesionales' : lista_profesionales()
     }
 
-    if 'buscar' in request.POST:
+    if 'buscar'        in request.POST:
         try:
             if request.method == 'POST':
                 cli_email   = request.POST.get('cbocli')
@@ -26,7 +26,7 @@ def contratos(request):
         except:
             data['cliente_no_seleccionado'] = 'debes seleccionar un cliente antes de buscar!.'
 
-    if 'buscaremail' in request.POST:
+    if 'buscaremail'   in request.POST:
         try:
             if request.method == 'POST':
                 cli_email   = request.POST.get('bemail')

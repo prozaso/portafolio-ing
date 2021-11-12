@@ -8,7 +8,7 @@ def rubros(request):
         'rubros' : lista_rubros()
     }
     
-    if 'buscar' in request.POST:
+    if 'buscar'   in request.POST:
         try:
             if request.method == 'POST':
                 id      = request.POST.get('cborub')
@@ -32,11 +32,11 @@ def rubros(request):
         except:
             data['eliminar'] = 'hubo un error al eliminar el rubro.'
 
-    if 'agregar' in request.POST:
+    if 'agregar'  in request.POST:
         try:
             if request.method == 'POST':
                 nombre_rubro = request.POST.get('nrubro')
-                salida = agregar_rubro(nombre_rubro)
+                salida       = agregar_rubro(nombre_rubro)
                 if salida == 1:
                     data['agregar'] = 'nuevo rubro agregado correctamente!.'
                 else:
@@ -44,12 +44,12 @@ def rubros(request):
         except:
             data['agregar'] = 'hubo un error al intentar agregar el rubro.'
 
-    if 'guardar' in request.POST:
+    if 'guardar'  in request.POST:
         try:
             if request.method == 'POST':
                 id_rubro     = request.POST.get('idrubro')
                 nombre_rubro = request.POST.get('nrubro')
-                salida = modificar_rubro(id_rubro, nombre_rubro)
+                salida       = modificar_rubro(id_rubro, nombre_rubro)
                 if salida == 1 and nombre_rubro != '':
                     data['modificar'] = 'cambios realizados correctamente!.'
                 else:
