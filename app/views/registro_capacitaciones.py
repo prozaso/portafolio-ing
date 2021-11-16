@@ -66,7 +66,6 @@ def registro_capacitaciones(request):
                     data['lista'] = salida_lista
                 #else:
                     #data['lista'] = 'hubo un error al intentar buscar la lista de empleados.'
-
     except:
             data['operacion'] = 'hubo un error al intentar realizar la operación.'
 
@@ -78,11 +77,6 @@ def registro_capacitaciones(request):
                 det_cap      = request.POST.get('det_cap_id')
                 rut          = request.POST.get('rut')
                 nombre       = request.POST.get('nombre')
-                print(request.POST.get('det_cap_id'))
-                print(request.POST.get('rut'))
-                print(request.POST.get('nombre'))
-                print(user)
-
                 registrar_empleado_capacitacion(det_cap, rut, nombre)
 
                 try:
@@ -95,11 +89,9 @@ def registro_capacitaciones(request):
                             registrar_empleado_capacitacion(det_cap, rut_n, nombre_n)
                 except:
                     data['grupo'] = 'hubo un error al intentar registrar a los empleados.'
-
     except:
             data['operacion'] = 'hubo un error al intentar realizar la operación.'
     
-
     return render(request, 'app/registro_capacitaciones.html', data)
 
 

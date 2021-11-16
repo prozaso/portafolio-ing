@@ -9,7 +9,8 @@
     {% csrf_token %}
     <div class="row shadow bg-warning">
         <!-- PRIMERA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow bg-white">
+        <div class="col m-3 p-3 shadow bg-white">
+          <p class="display-6 fw-lighter mb-4"><strong><small>Registrar accidente:</small></strong></p>
             <div class="input-group mb-3">
                 <span class="input-group-text col-lg-5" id="basic-addon1">Fecha del accidente</span>
                 <input type="date" name="fecha_acc" class="form-control" aria-describedby="basic-addon1">
@@ -44,8 +45,9 @@
         </div>
         
         <!-- SEGUNDA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow bg-white">
+        <div class="col m-3 p-3 shadow bg-white">
             <div class="accordion accordion-flush" id="accordionFlushExample">
+              <p class="display-6 fw-lighter mb-4"><strong><small>Lista de accidentes:</small></strong></p>
                 <table class="table table-sm border border-warning shadow p-5">
                     <thead class="table-warning">
                       <tr>
@@ -68,8 +70,6 @@
         </div>
     </div>
 </form>
-
-
 
 {% endif %}
 

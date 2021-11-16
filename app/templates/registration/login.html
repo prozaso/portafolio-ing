@@ -23,9 +23,9 @@
 {% csrf_token %}
 
     <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
-        <div class="col-6 border rounded m-3 p-3 shadow bg-white">
+        <div class="col-6 m-3 p-3 shadow bg-white">
             <div class="col-md-12 mb-3">
-                <h2>Log in</h2>
+                <p class="display-6 fw-lighter mb-4"><strong><small>Iniciar sesion:</small></strong></p>
                 <input type="hidden" name="next" value="{{ next }}">
                 {{ form.username|as_crispy_field }}
                 {{ form.password|as_crispy_field }}

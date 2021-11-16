@@ -3,11 +3,13 @@
 
 {% block contenido %}
 
+
 {% if user.es_administrador %}
 <form action="" method="POST">
   {% csrf_token %}
   <div class="row shadow bg-warning">
-    <div class="col border rounded m-3 p-3 shadow bg-white">
+    <div class="col m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Asignar capacitación:</small></strong></p>
         <div class="input-group mb-3">
             <span class="input-group-text col-lg-5" id="inputGroup-sizing-default">Cliente</span>
             <select class="form-select" id="cbocli" name="cbocli">
@@ -36,7 +38,8 @@
         </div>
     </div>
 
-    <div class="col border rounded m-3 p-3 shadow bg-white">
+    <div class="col m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Lista de asistentes:</small></strong></p>
       <div class="input-group mb-3">
         <label class="input-group-text col-lg-3" for="inputGroupSelect01">Capacitación</label>
         <select class="form-select" name="det_cap_id" id="inputGroupSelect01">
@@ -74,9 +77,11 @@
 {% if user.es_cliente %}
 <form action="" method="POST">
   {% csrf_token %}
-  <div class="row shadow bg-warning bg-opacity-75">
+  <div class="row shadow bg-warning">
+    
     <!-- PRIMERA COLUMNA -->
-    <div class="col border rounded m-3 shadow bg-white">
+    <div class="col m-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Proximas capacitaciones:</small></strong></p>
       {% for d in det_cap %}
       <div class="card text-center mb-3 mt-3">
         <div class="card-header bg-warning">
@@ -95,7 +100,8 @@
     </div>
 
     <!-- SEGUNDA COLUMNA -->
-    <div class="col border rounded m-3 shadow bg-white">
+    <div class="col m-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Registrar asistentes:</small></strong></p>
       <div class="input-group mb-3 mt-3">
         <label class="input-group-text col-lg-4" for="inputGroupSelect01">Capacitación</label>
         <select class="form-select" name="det_cap_id" id="inputGroupSelect01">

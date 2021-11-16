@@ -7,13 +7,14 @@
 
 {% if user.es_administrador %}
 
-<form  method="post">
+<form method="post">
   {% csrf_token %}
 
   <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
     <div class="col-6 border rounded m-3 p-3 shadow bg-white">
-        <div class="first p-3 mb-2">
-          <div class="form-group mt-4">
+      <p class="display-6 fw-lighter"><strong><small>Registrar usuario:</small></strong></p>
+        <div class="first p-3">
+          <div class="form-group">
             {{ form.es_cliente|as_crispy_field }}
           </div>
           <div class="form-group">

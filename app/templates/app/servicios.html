@@ -10,8 +10,8 @@
   {% csrf_token %}
 
   <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
-    <div class="col-6 border rounded m-3 p-3 shadow bg-white">
-
+    <div class="col-6 m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Crear / Modificar servicio:</small></strong></p>
       <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Servicio</span>
         <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
@@ -22,7 +22,6 @@
         </select>
         <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
       </div>
-
       {% for s in servicio %}
       <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">ID</span>
@@ -46,7 +45,6 @@
         <input type="text" name="vservicio" class="form-control" id="autoSizingInputGroup" placeholder="nombre servicio">
       </div>
       {% endfor %}
-  
       <div class="input-group mb-1">
         <button type="submit" name="guardar"  class="btn btn-warning col-6 border-white">Guardar cambios</button>
         <button type="submit" name="agregar"  class="btn btn-primary col-6 border-white">Guardar nuevo</button>
@@ -54,7 +52,6 @@
       <div class="mb-3">
         <button type="submit" name="eliminar" class="btn btn-sm btn-danger col-12 bg-opacity-25 border-white">Eliminar</button>
       </div>
-
     </div>
   </div>
 

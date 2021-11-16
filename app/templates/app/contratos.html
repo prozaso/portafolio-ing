@@ -8,8 +8,11 @@
 <form action="" method="post">
     {% csrf_token %}
     <div class="row shadow bg-warning bg-opacity-75">
+      
         <!-- PRIMERA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow bg-white">
+        <div class="col m-3 p-3 shadow bg-white">
+          <p class="display-6 fw-lighter mb-4"><strong><small>Crear contrato:</small></strong></p>
+
             <div class="input-group mb-3">
               <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Buscar email</span>
               <input type="email" name="bemail" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -68,7 +71,7 @@
         </div>
         
         <!-- SEGUNDA COLUMNA -->
-        <div class="col border rounded m-3 p-3 shadow bg-white">
+        <div class="col m-3 p-3 shadow bg-white">
             <div class="input-group mb-3">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Rubro</label>
               <select class="form-select" id="cborub" name="cborub">
@@ -78,7 +81,6 @@
                 {% endfor %}
               </select>
             </div>
-
             <div class="input-group mb-1">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Servicio</label>
               <select class="form-select" id="cboserv" name="cboserv">
@@ -94,7 +96,6 @@
               </div>
               <p id="container"></p>
             </div>
-
             <div class="input-group mb-3">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Region</label>
               <select class="form-select" id="region" name="region" onchange="cambiarComunas()">
@@ -104,14 +105,12 @@
                   {% endfor %}
               </select>
             </div>
-
             <div class="input-group mb-3">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Comuna</label>
               <select class="form-select" id="comuna" name="comuna">
                 <option value="0" selected>Seleccione...</option>
               </select>
             </div>
-
             <div class="input-group mb-3">
               <label class="input-group-text col-lg-3" for="inputGroupSelect01">Profesional</label>
               <select class="form-select" id="profesional" name="profesional">

@@ -9,7 +9,8 @@
   {% csrf_token %}
 
   <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
-    <div class="col-6 border rounded m-3 p-3 shadow bg-white">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Crear / Modificar rubro:</small></strong></p>
       <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Rubro</span>
         <select class="form-select" name="cborub" form-select-sm" aria-label=".form-select-sm example">
@@ -31,7 +32,6 @@
         <input type="text" name="nrubro" class="form-control" id="autoSizingInputGroup" placeholder="nombre rubro">
       </div> 
       {% endfor %}
-    
       <div class="input-group mb-1">
         <button type="submit" name="guardar"  class="btn btn-warning col-6 border-white">Guardar cambios</button>
         <button type="submit" name="agregar"  class="btn btn-primary col-6 border-white">Guardar nuevo</button>
