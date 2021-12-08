@@ -1,0 +1,94 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_administrador %}
+
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Crear / Modificar servicio:</small></strong></p>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Servicio</span>
+        <select class="form-select" id="cboserv" name="cboserv" form-select-sm" aria-label=".form-select-sm example">
+          <option value="0" selected>Seleccione...</option>
+          {% for s in servicios %}
+          <option value="{{ s.0 }}"> {{ s.1 }} </option>
+          {% endfor %}
+        </select>
+        <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
+      </div>
+      {% for s in servicio %}
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">ID</span>
+        <input value="{{ s.0 }}" type="text" name="idservicio" class="form-control" id="autoSizingInputGroup" placeholder="id servicio" readonly>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre servicio</span>
+        <input value="{{ s.1 }}" type="text" name="nservicio" class="form-control" id="autoSizingInputGroup" placeholder="nombre servicio">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Valor servicio</span>
+        <input value="{{ s.2 }}" type="text" name="vservicio" class="form-control" id="autoSizingInputGroup" placeholder="nombre servicio">
+      </div>
+      {% empty %}
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre servicio</span>
+        <input type="text" name="nservicio" class="form-control" id="autoSizingInputGroup" placeholder="nombre servicio">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Valor servicio</span>
+        <input type="text" name="vservicio" class="form-control" id="autoSizingInputGroup" placeholder="nombre servicio">
+      </div>
+      {% endfor %}
+      <div class="input-group mb-1">
+        <button type="submit" name="guardar"  class="btn btn-warning col-6 border-white">Guardar cambios</button>
+        <button type="submit" name="agregar"  class="btn btn-primary col-6 border-white">Guardar nuevo</button>
+      </div>
+      <div class="mb-3">
+        <button type="submit" name="eliminar" class="btn btn-sm btn-danger col-12 bg-opacity-25 border-white">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+    
+</form>
+  
+<!-- MENSAJES -->
+<div>
+  {% if servicio_no_seleccionado %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ servicio_no_seleccionado }}
+  </div>
+  {% endif %}
+
+  {% if eliminar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ eliminar }}
+  </div>
+  {% endif %}
+
+  {% if agregar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ agregar }}
+  </div>
+  {% endif %}
+
+  {% if modificar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ modificar }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+{% endif %}
+
+{% endblock %}

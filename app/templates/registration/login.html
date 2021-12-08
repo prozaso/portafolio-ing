@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+{% if form.errors %}
+    <p>Tu email y contraseña no son correctos. Por favor intentelo nuevamente.</p>
+{% endif %}
+
+{% if next %}
+
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina. Intente ingresar
+        con una cuenta que tenga acceso.</p>
+    {% else %}
+    <p>Por favor ingrese para ver esta pagina.</p>
+    {% endif %}
+    
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+    <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+        <div class="col-6 m-3 p-3 shadow bg-white">
+            <div class="col-md-12 mb-3">
+                <p class="display-6 fw-lighter mb-4"><strong><small>Iniciar sesion:</small></strong></p>
+                <input type="hidden" name="next" value="{{ next }}">
+                {{ form.username|as_crispy_field }}
+                {{ form.password|as_crispy_field }}
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+            </div>
+            {# Assumes you setup the password_reset view in your URLconf #}
+            <p><a href="{% url 'password_reset' %}">Olvidó la contraseña?</a></p>
+        </div>
+    </div>
+                
+</form>
+
+{% endblock %}

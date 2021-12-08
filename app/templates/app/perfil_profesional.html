@@ -1,0 +1,69 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_profesional %}
+
+<div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-8 m-3 p-3 shadow bg-white">
+        <p class="display-6 fw-lighter mb-4"><strong><small>Mi perfil:</small></strong></p>
+        {% for p in profesional %}
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Nombre</span>
+            <input value="{{ p.0 }}" type="text" name="nombre" class="form-control" id="autoSizingInputGroup" placeholder="razón social" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Rut</span>
+            <input value="{{ p.1 }}" type="text" name="rut" class="form-control" id="autoSizingInputGroup" placeholder="email" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Email</span>
+            <input value="{{ p.2 }}" type="text" name="email" class="form-control" id="autoSizingInputGroup" placeholder="rut" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Teléfono</span>
+            <input value="{{ p.3 }}" type="text" name="telefono" class="form-control" id="autoSizingInputGroup" placeholder="telefono" readonly>
+        </div>
+        {% endfor %}
+
+        <div>
+            <label for="exampleFormControlTextarea1" class="form-label">Clientes asignados:</label>
+
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        asd
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">2</span> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        asd
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        asd
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                </li>
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

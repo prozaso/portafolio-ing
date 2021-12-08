@@ -1,0 +1,90 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+  <div class="mt-4 mb-4">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'app/img/carousel/carrusel1.jpeg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'app/img/carousel/carrusel2.png' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'app/img/carousel/carrusel3.jpeg' %}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-center my-5">Nuestros Servicios</h2>
+    <div class="row g-0 pt-5 mb-4">
+              <div class="col-md-8 producto">
+                  <img class="img-fluid" src="{% static 'app/img/carousel/carrusel2.png' %}" alt="imagen producto">
+              </div>
+              <div class="col-md-4 bg-primary text-center p-5 text-white d-flex flex-column justify-content-center">
+                  <h3>Servicio de Visitas</h3>
+                  <p class="fs-5 fw-bold">Este servicio consta de 2 visitas programadas a la empresa que contrata el servicio, NO OBSTANTE se pueden agregar mas visitas por el cliente</p>
+                  <p >$ Costo incluido en el plan general</p>
+                  <a class="btn btn-success fs-4 fw-bold text-uppercase py-3" href="#">Contratar servicios</a>
+              </div>
+    </div>
+    <div class="row">
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img class="card-img-top" src="{% static 'app/img/carousel/carrusel1.jpeg' %}" alt="imagen producto">
+
+                      <div class="card-body text-center bg-primary text-white p-5">
+                          <h3>Informes detallados</h3>
+                          <p>Posterior a la visita se realizan informes con lo observado dentro de la misma con el proposito de realizar una mejora continua a nuestro cliente</p>
+                          <p class="fs-6 fw-bold">$ Costo incluido en el plan general </p>
+                          <a class="btn btn-success fw-bold text-uppercase py-3 w-100" href="#">Contratar servicios</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img class="card-img-top" src="{% static 'app/img/carousel/carrusel2.png' %}" alt="imagen producto">
+
+                      <div class="card-body text-center bg-primary text-white p-5">
+                          <h3>Monitoreo y Visitas</h3>
+                          <p>Como empresa nos comprometemos a realizar un trabajo con altos indices de efectividad y un monitoreo constante por un profesional experto en el rubro de tu empresa</p>
+                          <p class="fs-6 fw-bold">$ Costo incluido en el plan general </p>
+                          <a class="btn btn-success fw-bold text-uppercase py-3 w-100" href="#">Contratar servicios</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-6">
+                  <div class="card">
+                      <img class="card-img-top" src="{% static 'app/img/carousel/carrusel3.jpeg' %}" alt="imagen producto">
+
+                      <div class="card-body text-center bg-primary text-white p-5">
+                          <h3>Capacitaciones y mas</h3>
+                          <p>Nuestra empresa realiza capacitaciones en las distintas areas de prevención de riesgos para que tus trabajadores esten mucho mas seguros y preparados</p>
+                          <p class="fs-6 fw-bold">$ Costo incluido en el plan general </p>
+                          <a class="btn btn-success  fw-bold text-uppercase py-3 w-100" href="#">Contratar servicios</a>
+                      </div>
+                  </div>
+              </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

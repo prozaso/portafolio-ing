@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_cliente %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row shadow bg-warning">
+        <!-- PRIMERA COLUMNA -->
+        <div class="col m-3 p-3 shadow bg-white">
+          <p class="display-6 fw-lighter mb-4"><strong><small>Registrar accidente:</small></strong></p>
+            <div class="input-group mb-3">
+                <span class="input-group-text col-lg-5" id="basic-addon1">Fecha del accidente</span>
+                <input type="date" name="fecha_acc" class="form-control" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text col-lg-5" for="inputGroupSelect01">Gravedad</label>
+                <select class="form-select" name="gravedad" id="inputGroupSelect01">
+                    <option value="0" selected>Seleccione...</option>
+                    {% for g in gravedades %}
+                    <option value="{{ g.0 }}"> {{ g.1 }} </option>
+                    {% endfor %}
+                </select>
+              </div>
+            <div class="form-floating">
+                <textarea class="form-control" name="detalle_acc" placeholder="Escriba aquí" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Explique lo sucedido</label>
+            </div>
+            <div class="mt-3 d-grid gap-2 mb-3">
+                <button type="submit" name="ingresar" class="btn btn-primary">Enviar accidente</button>
+            </div>
+
+            <!-- MENSAJES -->
+            <div>
+                {% if ingresar %}
+                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <strong>Hola!, </strong> {{ ingresar }}
+                </div>
+                {% endif %}
+            </div>
+            <!-- FIN MENSAJES -->
+            
+        </div>
+        
+        <!-- SEGUNDA COLUMNA -->
+        <div class="col m-3 p-3 shadow bg-white">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <p class="display-6 fw-lighter mb-4"><strong><small>Lista de accidentes:</small></strong></p>
+                <table class="table table-sm border border-warning shadow p-5">
+                    <thead class="table-warning">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">FECHA</th>
+                        <th scope="col">GRAVEDAD</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for a in accidentes %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ a.0 }}</td>
+                        <td>{{ a.1 }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endif %}
+
+{% endblock %}

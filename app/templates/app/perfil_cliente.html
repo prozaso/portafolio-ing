@@ -1,0 +1,76 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_cliente %}
+
+{% if cliente %}
+
+<div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-8 m-3 p-3 shadow bg-white">
+        <p class="display-6 fw-lighter mb-4"><strong><small>Mi perfil:</small></strong></p>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Razón social</span>
+            <input value="{{ cliente.2 }}" type="text" name="razonsocial" class="form-control" id="autoSizingInputGroup" placeholder="razón social" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Email</span>
+            <input value="{{ cliente.0 }}" type="text" name="email" class="form-control" id="autoSizingInputGroup" placeholder="email" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">RUT</span>
+            <input value="{{ cliente.1 }}" type="text" name="rut" class="form-control" id="autoSizingInputGroup" placeholder="rut" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Teléfono</span>
+            <input value="{{ cliente.3 }}" type="text" name="telefono" class="form-control" id="autoSizingInputGroup" placeholder="telefono" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Dirección</span>
+            <input value="{{ cliente.4 }}" type="text" name="direccion" class="form-control" id="autoSizingInputGroup" placeholder="direccion" readonly>
+        </div>
+
+        <div>
+            <label for="exampleFormControlTextarea1" class="form-label">Servicios contratados:</label>
+
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        {{ cliente.5 }}
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">2</span> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        {{ cliente.6 }}
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">
+                        {{ cliente.7 }}
+                    </div>
+                    <!-- Content for list item -->
+                </div>
+                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
+                </li>
+            </ol>
+        </div>
+
+
+    </div>
+</div>
+
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

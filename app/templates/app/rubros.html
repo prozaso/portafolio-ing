@@ -1,0 +1,77 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_administrador %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Crear / Modificar rubro:</small></strong></p>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Rubro</span>
+        <select class="form-select" name="cborub" form-select-sm" aria-label=".form-select-sm example">
+          <option value="0" selected>Seleccione...</option>
+          {% for r in rubros %}
+          <option value="{{ r.0 }}"> {{ r.1 }} </option>
+          {% endfor %}
+        </select>
+        <button type="submit" name="buscar" class="btn btn-primary">Buscar</button>
+      </div>
+      {% for r in rubro %}
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre rubro</span>
+        <input value="{{ r.1 }}" type="text" name="nrubro" class="form-control" id="autoSizingInputGroup" placeholder="nombre rubro">
+      </div> 
+      {% empty %}
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre rubro</span>
+        <input type="text" name="nrubro" class="form-control" id="autoSizingInputGroup" placeholder="nombre rubro">
+      </div> 
+      {% endfor %}
+      <div class="input-group mb-1">
+        <button type="submit" name="guardar"  class="btn btn-warning col-6 border-white">Guardar cambios</button>
+        <button type="submit" name="agregar"  class="btn btn-primary col-6 border-white">Guardar nuevo</button>
+      </div>
+      <div class="mb-3">
+        <button type="submit" name="eliminar" class="btn btn-sm btn-danger col-12 bg-opacity-25 border-white">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<!-- MENSAJES -->
+<div>
+  {% if rubro_no_seleccionado %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ rubro_no_seleccionado }}
+  </div>
+  {% endif %}
+
+  {% if eliminar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ eliminar }}
+  </div>
+  {% endif %}
+
+  {% if agregar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ agregar }}
+  </div>
+  {% endif %}
+
+  {% if modificar %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ modificar }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+{% endif %}
+
+{% endblock %}
