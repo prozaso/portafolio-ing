@@ -1,0 +1,101 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+
+{% if user.es_administrador %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+        <p class="display-6 fw-lighter mb-4"><strong><small>Asignar visita:</small></strong></p>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="inputGroup-sizing-default">Cliente</span>
+            <select class="form-select" id="cbocli" name="cbocli">
+                <option value="0" selected>Seleccione...</option>
+                {% for c in clientes %}
+                <option value="{{ c.15 }}"> {{ c.15 }} </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-lg-3" id="basic-addon1">Fecha de visita</span>
+            <input type="date" name="fecha_visita" class="form-control" aria-describedby="basic-addon1">
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" name="guardar" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+  </div>
+</form>
+{% endif %}
+
+{% if user.es_profesional %}
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="row shadow bg-warning">
+    
+    <!-- PRIMERA COLUMNA -->
+    <div class="col m-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Proximas visitas:</small></strong></p>
+      {% for v in visitas %}
+      <div class="card text-center mb-3 mt-3">
+        <div class="card-header bg-warning">
+          <p class="card-text">{{ v.1 }}</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Fecha: {{ v.2 }}</h5>
+          <p class="fw-lighter m-0">CODIGO: {{ v.0 }}</p>
+        </div>
+        <div class="card-footer bg-warning">
+          Días restantes <span class="badge bg-primary">{{ v.3 }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- SEGUNDA COLUMNA -->
+    <div class="col m-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Registro de visita:</small></strong></p>
+      <div class="input-group mb-3 mt-3">
+        <label class="input-group-text col-lg-4" for="inputGroupSelect01">Visitas agendadas</label>
+        <select class="form-select" name="det_vis_id" id="inputGroupSelect01">
+            <option value="0" selected>Seleccione...</option>
+            {% for v in visitas %}
+            <option value="{{ v.0 }}"> [Codigo: {{ v.0 }}] {{ v.2 }} - {{ v.1 }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="form-floating mb-3">
+          <textarea class="form-control" name="datos_visita" placeholder="Escriba aquí" id="floatingTextarea2" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">Datos de visita</label>
+      </div>
+      <div>
+        <div class="d-grid gap-2">
+            <button type="submit" name="guardar_datos_visita" class="btn btn-primary mb-3">Guardar datos de visita</button>
+        </div>
+        <p id="container"></p>
+      </div>
+    </div>
+  </div>
+</form>
+{% endif %}
+
+<!-- MENSAJES -->
+<div>
+  {% if visita %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ visita }}
+  </div>
+  {% endif %}
+  {% if guardar_datos %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ guardar_datos }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+
+{% endblock %}

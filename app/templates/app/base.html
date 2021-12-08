@@ -46,6 +46,9 @@
                 <li>
                   <a class="dropdown-item" href="{% url 'registro_capacitaciones' %}">Registro capacitaciones</a>
                 </li>
+                <li>
+                  <a class="dropdown-item" type="submit" href="{% url 'visita_revision' %}">Visitas a clientes</a>
+                </li>
                 <li><hr class="dropdown-divider">
                 </li>
                 <li>
@@ -63,6 +66,9 @@
                   <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
                 </li>
                 {% elif user.es_profesional %}
+                <li>
+                  <a class="dropdown-item" type="submit" href="{% url 'visita_revision' %}">Visitas a clientes</a>
+                </li>
                 <li>
                   <a class="dropdown-item" type="submit" href="{% url 'perfil_profesional' %}">Mi Perfil</a>
                 </li>

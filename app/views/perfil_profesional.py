@@ -6,11 +6,10 @@ import cx_Oracle
 def perfil_profesional(request):
 
     user = request.user.get_username()
-    print(profesional_cli_asign(user))
-
 
     data = {
-        'profesional' : datos_profesional(user)
+        'profesional' : datos_profesional(user),
+        'clientes'    : profesional_cli_asign(user)
     }
 
     return render(request, 'app/perfil_profesional.html', data)

@@ -29,35 +29,17 @@
 
         <div>
             <label for="exampleFormControlTextarea1" class="form-label">Clientes asignados:</label>
-
             <ol class="list-group list-group-numbered">
+                {% for c in clientes %}
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
                     <div class="fw-bold">
-                        asd
+                        {{ c.0 }}
                     </div>
                     <!-- Content for list item -->
                 </div>
                 <!-- <span class="badge bg-primary rounded-pill">2</span> -->
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">
-                        asd
-                    </div>
-                    <!-- Content for list item -->
-                </div>
-                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">
-                        asd
-                    </div>
-                    <!-- Content for list item -->
-                </div>
-                <!-- <span class="badge bg-primary rounded-pill">14</span> -->
-                </li>
+                {% endfor %}
             </ol>
         </div>
 
