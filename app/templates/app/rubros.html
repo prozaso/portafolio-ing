@@ -23,9 +23,13 @@
       </div>
       {% for r in rubro %}
       <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">ID</span>
+        <input value="{{ r.0 }}" type="text" name="idrubro" class="form-control" id="autoSizingInputGroup" placeholder="nombre rubro" readonly>
+      </div>
+      <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre rubro</span>
         <input value="{{ r.1 }}" type="text" name="nrubro" class="form-control" id="autoSizingInputGroup" placeholder="nombre rubro">
-      </div> 
+      </div>
       {% empty %}
       <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre rubro</span>
