@@ -1,0 +1,109 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+{% if user.es_cliente %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+        <p class="display-6 fw-lighter mb-4"><strong><small>Lista de visitas:</small></strong></p>
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+
+            {% for v in visitas_cli %}
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  [{{ v.0 }}] - Cliente: {{ v.1 }}
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">{{ v.2 }}</div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+    </div>
+  </div>
+</form>
+
+{% endif %}
+
+{% if user.es_profesional %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+  
+    <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+      <div class="col-6 m-3 p-3 shadow bg-white">
+          <p class="display-6 fw-lighter mb-4"><strong><small>Lista de visitas:</small></strong></p>
+  
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+  
+              {% for v in visitas_pro %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    [{{ v.0 }}] - Cliente: {{ v.1 }}
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">{{ v.2 }}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+      </div>
+    </div>
+</form>
+
+{% endif %}
+
+{% if user.es_administrador %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+  
+    <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+      <div class="col-6 m-3 p-3 shadow bg-white">
+          <p class="display-6 fw-lighter mb-4"><strong><small>Lista de visitas:</small></strong></p>
+  
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+  
+              {% for v in visitas_adm %}
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    [{{ v.0 }}] - Cliente: {{ v.1 }} - Profesional: {{ v.2 }}
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">{{ v.3 }}</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+      </div>
+    </div>
+</form>
+
+{% endif %}
+
+<!-- MENSAJES -->
+<div>
+  {% if rubro_no_seleccionado %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ rubro_no_seleccionado }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+
+
+{% endblock %}

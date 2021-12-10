@@ -23,6 +23,10 @@
       </div>
       {% for c in capacitacion %}
       <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">ID</span>
+        <input value="{{ c.0 }}" type="text" name="idcapacitacion" class="form-control" id="autoSizingInputGroup" placeholder="nombre capacitacion" readonly>
+      </div>
+      <div class="input-group mb-3">
         <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Nombre capacitacion</span>
         <input value="{{ c.1 }}" type="text" name="ncapacitacion" class="form-control" id="autoSizingInputGroup" placeholder="nombre capacitacion">
       </div>

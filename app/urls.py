@@ -2,7 +2,7 @@ from django.urls import path
 
 from app.views.accidentes import accidentes
 from app.views.registro_capacitaciones import registro_capacitaciones
-from .views import views, servicios, usuarios, capacitaciones, rubros, contratos, accidentes, perfil_cliente, registro_capacitaciones, perfil_profesional, visita_revision
+from .views import views, servicios, usuarios, capacitaciones, rubros, contratos, accidentes, perfil_cliente, registro_capacitaciones, perfil_profesional, visita_revision, lista_visitas
 
 
 urlpatterns = [
@@ -18,5 +18,6 @@ urlpatterns = [
     path('registro_capacitaciones', registro_capacitaciones.registro_capacitaciones, name='registro_capacitaciones'),
     path('perfil_profesional', perfil_profesional.perfil_profesional, name='perfil_profesional'),
     path('visita_revision', visita_revision.visita_revision, name='visita_revision'),
+    path('lista_visitas', lista_visitas.lista_visitas, name='lista_visitas'),
 
 ]
