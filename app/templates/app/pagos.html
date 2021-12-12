@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row shadow bg-warning bg-opacity-75 justify-content-center">
+    <div class="col-6 m-3 p-3 shadow bg-white">
+      <p class="display-6 fw-lighter mb-4"><strong><small>Pago de plan:</small></strong></p>
+      <div class="input-group mb-3">
+        <span class="input-group-text col-lg-4" id="inputGroup-sizing-default">Tipo de pago</span>
+        <select class="form-select" name="cbotipo" form-select-sm" aria-label=".form-select-sm example">
+          <option value="0" selected>Seleccione...</option>
+          {% for t in tipos_pago %}
+          <option value="{{ t.0 }}"> {{ t.1 }} </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+      <select class="fw-bold form-control form-control-md border border-bottom border-5 border-white text-center bg-warning mb-1" name="valor" form-select-sm" aria-label=".form-select-sm example">
+          {% for p in pago %}
+          <option value="{{ p.0 }}"> {{ p.0 }} </option>
+          {% endfor %}
+      </select>
+      </div>
+      <div class="mb-3">
+        <button type="submit" name="pagar" class="btn btn-primary col-12 btn-lg">Pagar</button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<!-- MENSAJES -->
+<div>
+  {% if intento_pago %}
+  <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <strong>Hola!, </strong> {{ intento_pago }}
+  </div>
+  {% endif %}
+</div>
+<!-- FIN MENSAJES -->
+
+
+{% endblock %}
